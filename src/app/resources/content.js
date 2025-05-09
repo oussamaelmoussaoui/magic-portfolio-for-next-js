@@ -1,15 +1,15 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "EL MOUSSAOUI",
+  lastName: "Oussama",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
   role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  avatar: "/images/photo_finale.jpg",
+  location: "Africa/Casablanca", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "French", "Spanish", "Arabic"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -29,12 +29,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/oussamaelmoussaoui",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/el-moussaoui-oussama-0a4a9524b/",
   },
   {
     name: "X",
@@ -44,7 +44,7 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: "mailto:example@gmail.com",
+    link: "mailto:oelmoussawi@gmail.com",
   },
 ];
 
@@ -55,8 +55,8 @@ const home = {
   headline: <>Design engineer and builder</>,
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Sam, a design engineer at <InlineCode>ENSAO</InlineCode>, 
+      where I craft intuitive <br /> user experiences. After hours, I build my own projects.
     </>
   ),
 };
@@ -81,14 +81,14 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
+        Sam is a Oujda-based design engineer with a passion for transforming complex challenges
+        into simple, elegant design solutions. His work spans digital interfaces, interactive
         experiences, and the convergence of design and technology.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: false, // set to false to hide this section
     title: "Work Experience",
     experiences: [
       {
@@ -138,13 +138,20 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
+        name: "University of Mohamed First Oujda",
+        timeframe: "2022 - 2027",
         description: <>Studied software engineering.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Othmane Ibn Affane High School",
+        timeframe: "2019 - 2022",
+        description: <>Studied Basic Maths and Physics for engineering.</>,
       },
+      {
+        name: "1 Million Arabe Coders",
+        timeframe: "2019 - 2020",
+        description: <>Completed a full-stack web development course.</>,
+      }
     ],
   },
   technical: {
@@ -183,6 +190,19 @@ const about = {
           },
         ],
       },
+      {
+        title: "Python",
+        description: <>Building web apps with Python.</>,
+      },
+      {
+        title: "JAVA",
+        description: <>Building complex software solutions with JAVA.</>,
+      },
+      {
+        title: "Shopify",
+        description: <>Building e-commerce solutions with Shopify.</>,
+      },
+
     ],
   },
 };
