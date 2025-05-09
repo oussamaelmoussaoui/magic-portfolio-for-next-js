@@ -8,6 +8,7 @@ import { baseURL, effects, style } from "@/app/resources";
 
 import { Inter } from "next/font/google";
 import { Source_Code_Pro } from "next/font/google";
+import { Sora } from "next/font/google";
 
 import { person, home } from "@/app/resources/content";
 import { Background, Column, Flex, ToastProvider } from "@/once-ui/components";
@@ -41,6 +42,12 @@ export async function generateMetadata() {
 
 const primary = Inter({
   variable: "--font-primary",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const SoraFont = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
   display: "swap",
 });
@@ -84,7 +91,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       data-surface={style.surface}
       data-transition={style.transition}
       className={classNames(
-        primary.variable,
+        SoraFont.variable,
         secondary ? secondary.variable : "",
         tertiary ? tertiary.variable : "",
         code.variable,

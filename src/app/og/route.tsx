@@ -10,7 +10,11 @@ export async function GET(request: Request) {
   const font = fetch(new URL("../../../public/fonts/Inter.ttf", import.meta.url)).then((res) =>
     res.arrayBuffer(),
   );
-  const fontData = await font;
+
+  const fontSora = fetch(new URL("../../../public/fonts/Sora-VariableFont_wght.ttf", import.meta.url)).then((res) =>
+    res.arrayBuffer(),
+  );
+  const fontData = await fontSora;
 
   return new ImageResponse(
     <div
@@ -28,7 +32,7 @@ export async function GET(request: Request) {
           flexDirection: "column",
           justifyContent: "center",
           gap: "4rem",
-          fontFamily: "Inter",
+          fontFamily: "Sora",
           fontStyle: "normal",
           color: "white",
         }}
