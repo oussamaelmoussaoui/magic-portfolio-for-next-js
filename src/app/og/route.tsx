@@ -59,7 +59,13 @@ export async function GET(request: Request) {
           <img
             src={"https://" + baseURL + person.avatar}
             alt={person.name + " avatar"}
-            className="og-avatar"
+            style={{
+              width: "12rem",
+              height: "12rem",
+              objectFit: "cover",
+              borderRadius: "100%",
+            }}
+            
           />
           <div
             style={{
