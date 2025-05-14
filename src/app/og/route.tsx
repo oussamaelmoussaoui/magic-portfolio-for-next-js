@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { baseURL } from "@/app/resources";
 import { person } from "@/app/resources/content";
+import "./og-image.css";
 
 export const runtime = "edge";
 
@@ -54,15 +55,11 @@ export async function GET(request: Request) {
             alignItems: "center",
             gap: "5rem",
           }}
-        >
+          >
           <img
             src={"https://" + baseURL + person.avatar}
-            style={{
-              width: "12rem",
-              height: "12rem",
-              objectFit: "cover",
-              borderRadius: "100%",
-            }}
+            alt={person.name + " avatar"}
+            className="og-avatar"
           />
           <div
             style={{
