@@ -15,7 +15,7 @@ const protectedRoutes = {
 };
 
 const style = {
-  theme: "light", // dark | light
+  theme: "dark", // dark | light
   neutral: "gray", // sand | gray | slate
   brand: "violet", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | red | aqua | cyan
   accent: "orange", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | red | aqua | cyan
