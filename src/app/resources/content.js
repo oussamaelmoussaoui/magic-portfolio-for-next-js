@@ -55,7 +55,7 @@ const home = {
   headline: <>Design engineer and builder</>,
   subline: (
     <>
-      I'm Sam, a design engineer at <InlineCode>ENSAO</InlineCode>, 
+      I'm EL MOUSSAOUI Oussama, a Data Science & Cloud Computing engineer student and a web developer at <InlineCode>ENSAO</InlineCode>, 
       where I craft intuitive <br /> user experiences. After hours, I build my own projects.
     </>
   ),
@@ -81,7 +81,7 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Sam is a Oujda-based design engineer with a passion for transforming complex challenges
+        Oussama is an Oujda-based design engineer with a passion for transforming complex challenges
         into simple, elegant design solutions. His work spans digital interfaces, interactive
         experiences, and the convergence of design and technology.
       </>
