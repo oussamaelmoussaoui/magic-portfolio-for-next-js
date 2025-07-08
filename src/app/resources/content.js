@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
+  role: "Web Developer",
   avatar: "/images/photo_finale.jpg",
   location: "Africa/Casablanca", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "French", "Spanish", "Arabic"], // optional: Leave the array empty if you don't want to display languages
@@ -52,7 +52,7 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  headline: <>Web developer and builder</>,
   subline: (
     <>
       I'm EL MOUSSAOUI Oussama, a Data Science & Cloud Computing engineer student and a web developer at <InlineCode>ENSAO</InlineCode>, 
@@ -65,87 +65,47 @@ const about = {
   label: "About",
   title: "About me",
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  
   tableOfContent: {
     display: true,
     subItems: false,
   },
+  
   avatar: {
     display: true,
   },
+  
   calendar: {
     display: true,
     link: "https://cal.com",
   },
+  
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Oussama is an Oujda-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. His work spans digital interfaces, interactive
+        Oussama is an Oujda-based web developer and data science and cloud computing
+        engineer student with a passion for transforming complex challenges
+        into simple, elegant web solutions. My work spans digital interfaces, interactive
         experiences, and the convergence of design and technology.
       </>
     ),
   },
-  work: {
-    display: true, // set to false to hide this section
-    title: "Work Experience",
-    experiences: [
-      {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
-        achievements: [
-          <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
-        ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-20.png",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
-        achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
-        ],
-        images: [],
-      },
-    ],
-  },
+
   studies: {
     display: true, // set to false to hide this section
     title: "Studies",
     institutions: [
       {
-        name: "University of Mohamed First Oujda",
+        name: "The School of Applied Sciences Oujda (ENSA Oujda)",
         timeframe: "2022 - 2027",
-        description: <>Studied software engineering.</>,
+        description: <>Studying Data Science & Cloud Computing engineering.</>,
       },
       {
         name: "Othmane Ibn Affane High School",
         timeframe: "2019 - 2022",
-        description: <>Studied Basic Maths and Physics for engineering.</>,
+        description: <>Studied Maths science option A (Science Maths -A).</>,
       },
       {
         name: "1 Million Arabe Coders",
@@ -154,23 +114,79 @@ const about = {
       }
     ],
   },
+
+  work: {
+    display: true, // set to false to hide this section
+    title: "Work Experience",
+    experiences: [
+      {
+        company: "DeltaBrands LLC",
+        timeframe: "2023 - 2024",
+        role: "Store Creator & Manager",
+        achievements: [
+          <>
+            Building good looking Stores using <InlineCode>Shopify</InlineCode> with free and premium themes
+            that responds on the brand's needs.
+          </>,
+          <>
+            Setup and managed multiple Shopify stores, optimizing product listings and
+            improving conversion rates through A/B testing and user feedback.
+          </>,
+          <>
+            Payment integration and shipping setup for the stores, ensuring a smooth
+            customer experience from browsing to checkout.
+          </>
+        ],
+        images: [
+          // optional: leave the array empty if you don't want to display images
+          {
+            src: "/images/projects/project-01/cover-20.png",
+            alt: "Shopify Store",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      
+    ],
+  },
+
   technical: {
     display: true, // set to false to hide this section
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+        title: "HTML/CSS",
+        description: 
+        <>
+          The basics of any website! So of course I know them by heart.
+        </>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
+            src: "/images/projects/project-01/cover-05.png",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
+            src: "/images/projects/project-01/cover-06.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        title: "Javascript / GSAP",
+        description: 
+        <>
+          First programming language to master for any web developer.
+        </>,
+        // optional: leave the array empty if you don't want to display images
+        images: [
+          {
+            src: "/images/projects/project-01/cover-07.png",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -179,28 +195,44 @@ const about = {
       },
       {
         title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        description: 
+        <>
+          We mostly need a framework for building server-rendered React applications, So <InlineCode> Next.js </InlineCode> is the greatest choice.
+        </>,
+        images: [],
       },
       {
         title: "Python",
-        description: <>Building web apps with Python.</>,
+        description: 
+        <>
+          Python is a versatile programming language used for web development, data analysis, artificial intelligence, and more.
+          So here is a weather app That I built using <InlineCode>Flask</InlineCode> and <InlineCode>OpenWeatherMap API</InlineCode>.
+        </>,
+        images: [],
       },
       {
-        title: "JAVA",
-        description: <>Building complex software solutions with JAVA.</>,
+        title: "SQL : MySQL",
+        description: 
+        <>
+          Being a Data Scientist requires a strong foundation in SQL for data manipulation and analysis. Here is an academic project that I built using <InlineCode>MySQL</InlineCode>.
+        </>,
+        images: [],
+      },
+      {
+        title: "JAVA OOP",
+        description: 
+        <>
+          Object-Oriented Programming (OOP) is a programming paradigm based on the concept of "objects". Here are some projects that I built using <InlineCode>JAVA</InlineCode>.
+        </>,
+        images: [],
       },
       {
         title: "Shopify",
-        description: <>Building e-commerce solutions with Shopify.</>,
+        description: 
+        <>
+          Building e-commerce solutions with Shopify. 
+        </>,
+        images: [],
       },
 
     ],

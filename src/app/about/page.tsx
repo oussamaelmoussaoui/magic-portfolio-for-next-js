@@ -52,14 +52,14 @@ export default function About() {
       items: [],
     },
     {
-      title: about.work.title,
-      display: about.work.display,
-      items: about.work.experiences.map((experience) => experience.company),
-    },
-    {
       title: about.studies.title,
       display: about.studies.display,
       items: about.studies.institutions.map((institution) => institution.name),
+    },
+    {
+      title: about.work.title,
+      display: about.work.display,
+      items: about.work.experiences.map((experience) => experience.company),
     },
     {
       title: about.technical.title,
@@ -209,6 +209,26 @@ export default function About() {
             </Column>
           )}
 
+          {about.studies.display && (
+            <>
+              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
+                {about.studies.title}
+              </Heading>
+              <Column fillWidth gap="l" marginBottom="40">
+                {about.studies.institutions.map((institution, index) => (
+                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
+                    <Text id={institution.name} variant="heading-strong-l">
+                      {institution.name}
+                    </Text>
+                    <Text variant="heading-default-xs" onBackground="neutral-weak">
+                      {institution.description}
+                    </Text>
+                  </Column>
+                ))}
+              </Column>
+            </>
+          )}
+
           {about.work.display && (
             <>
               <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
@@ -265,26 +285,6 @@ export default function About() {
                         ))}
                       </Flex>
                     )}
-                  </Column>
-                ))}
-              </Column>
-            </>
-          )}
-
-          {about.studies.display && (
-            <>
-              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
-                {about.studies.title}
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution, index) => (
-                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
-                    </Text>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
-                      {institution.description}
-                    </Text>
                   </Column>
                 ))}
               </Column>

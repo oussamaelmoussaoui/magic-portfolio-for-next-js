@@ -109,6 +109,7 @@ export const Header = () => {
                   />
                 </>
               )}
+              <Line vert maxHeight="24" />
               {routes["/blog"] && (
                 <>
                   <ToggleButton
@@ -142,7 +143,7 @@ export const Header = () => {
                     selected={pathname.startsWith("/gallery")}
                   />
                 </>
-              )}
+              )} 
             </Flex>
           </Flex>
         </Flex>

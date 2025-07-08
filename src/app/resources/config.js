@@ -16,12 +16,12 @@ const protectedRoutes = {
 
 const style = {
   theme: "dark", // dark | light
-  neutral: "gray", // sand | gray | slate
-  brand: "indigo", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | red | aqua | cyan
-  accent: "orange", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | red | aqua | cyan
+  neutral: "slate", // sand | gray | slate
+  brand: "blue", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | red | aqua | cyan
+  accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | red | aqua | cyan
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic
-  border: "playful", // rounded | playful | conservative
+  border: "rounded", // rounded | playful | conservative
   surface: "translucent", // filled | translucent
   transition: "all", // all | micro | macro
 };
