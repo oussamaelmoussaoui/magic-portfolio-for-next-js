@@ -55,7 +55,7 @@ const home = {
   headline: <>Web developer and builder</>,
   subline: (
     <>
-      I'm EL MOUSSAOUI Oussama, a Data Science & Cloud Computing engineer student and a web developer at <InlineCode>ENSAO</InlineCode>, 
+      I am EL MOUSSAOUI Oussama, a Data Science & Cloud Computing engineer student and a web developer at <InlineCode> ENSAO </InlineCode>, 
       where I craft intuitive <br /> user experiences. After hours, I build my own projects.
     </>
   ),
@@ -141,6 +141,18 @@ const about = {
           // optional: leave the array empty if you don't want to display images
           {
             src: "/images/projects/project-01/cover-20.png",
+            alt: "Shopify Store",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/project-01/cover-12.png",
+            alt: "Shopify Store",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/project-01/cover-07.png",
             alt: "Shopify Store",
             width: 16,
             height: 9,
