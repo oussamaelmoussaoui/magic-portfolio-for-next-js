@@ -57,6 +57,11 @@ export default function About() {
       items: about.studies.institutions.map((institution) => institution.name),
     },
     {
+      title: about.activities.title,
+      display: about.activities.display,
+      items: about.activities.career.map((career) => career.role),
+    },
+    {
       title: about.work.title,
       display: about.work.display,
       items: about.work.experiences.map((experience) => experience.company),
@@ -91,6 +96,7 @@ export default function About() {
           }),
         }}
       />
+
       {about.tableOfContent.display && (
         <Column
           left="0"
@@ -103,6 +109,7 @@ export default function About() {
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
+
       <Flex fillWidth mobileDirection="column" horizontal="center">
         {about.avatar.display && (
           <Column
@@ -163,6 +170,7 @@ export default function About() {
                 />
               </Flex>
             )}
+
             <Heading className={styles.textAlign} variant="display-strong-xl">
               {person.name}
             </Heading>
@@ -173,6 +181,7 @@ export default function About() {
             >
               {person.role}
             </Text>
+
             {social.length > 0 && (
               <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth>
                 {social.map(
@@ -222,6 +231,29 @@ export default function About() {
                     </Text>
                     <Text variant="heading-default-xs" onBackground="neutral-weak">
                       {institution.description}
+                    </Text>
+                  </Column>
+                ))}
+              </Column>
+            </>
+          )}
+
+          {about.activities.display && (
+            <>
+              <Heading as="h2" id={about.activities.title} variant="display-strong-s" marginBottom="m">
+                {about.activities.title}
+              </Heading>
+              <Column fillWidth gap="l" marginBottom="40">
+                {about.activities.career.map((career, index) => (
+                  <Column key={`${career.role}-${index}`} fillWidth gap="4">
+                    <Text id={career.role} variant="heading-strong-l">
+                      {career.role}
+                    </Text>
+                    <Text variant="heading-default-xs" onBackground="neutral-weak">
+                      {career.club}
+                    </Text>
+                    <Text variant="heading-default-xs" onBackground="neutral-weak">
+                      {career.year}
                     </Text>
                   </Column>
                 ))}

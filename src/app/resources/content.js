@@ -115,6 +115,38 @@ const about = {
     ],
   },
 
+  activities: {
+    display: true,
+    title: "After-School Activities",
+    career: [
+      {
+        role: "Treasurer",
+        club: "ADE (student association)",
+        year: "2024 - Present",
+      },
+      {
+        role: "Vice President",
+        club: "Club Sportif ENSAO",
+        year: "2024 - 2025",
+      },
+      {
+        role: "Member",
+        club: "DSCC Club (Data club)",
+        year: "2024 - 2025",
+      },
+      {
+        role: "Head of the Sponsoring Unit",
+        club: "Minds & Machines",
+        year: "2024 - 2025",
+      },
+      {
+        role: "Head of the Media Unit",
+        club: "Club Sportif ENSAO",
+        year: "2023 - 2024",
+      },
+    ],
+  },
+
   work: {
     display: true, // set to false to hide this section
     title: "Work Experience",
