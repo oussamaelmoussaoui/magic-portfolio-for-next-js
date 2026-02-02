@@ -32,8 +32,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <Column fillWidth gap="m">
+      
       <Carousel
-        sizes="(max-width: 960px) 100vw, 960px"
+        sizes="(max-width: 1200px) 100vw, 1200px"
         images={images.map((image) => ({
           src: image,
           alt: title,
@@ -54,14 +55,19 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             </Heading>
           </Flex>
         )}
+
         {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
+
           <Column flex={7} gap="16">
-            {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
+
+           {/*  {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />} */}
+
             {description?.trim() && (
-              <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
+              <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak" >
                 {description}
               </Text>
             )}
+
             <Flex gap="24" wrap>
               {content?.trim() && (
                 <SmartLink
@@ -72,6 +78,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   <Text variant="body-default-s">Read case study</Text>
                 </SmartLink>
               )}
+
               {link && (
                 <SmartLink
                   suffixIcon="arrowUpRightFromSquare"
@@ -82,7 +89,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 </SmartLink>
               )}
             </Flex>
+
           </Column>
+
         )}
       </Flex>
     </Column>

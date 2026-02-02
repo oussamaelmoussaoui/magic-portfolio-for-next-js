@@ -22,7 +22,9 @@ export type TShirtSizes = "xs" | "s" | "m" | "l" | "xl";
 
 export type ResponsiveSpacingToken = TShirtSizes;
 
-export type ShadowSize = TShirtSizes;
+export type ShadowCard = "box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)";
+
+export type ShadowSize = TShirtSizes | ShadowCard;
 
 export type SpacingToken = StaticSpacingToken | ResponsiveSpacingToken;
 

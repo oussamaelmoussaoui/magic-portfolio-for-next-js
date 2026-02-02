@@ -12,6 +12,7 @@ import {
   TextType,
   TextVariant,
   TextWeight,
+  ShadowCard
 } from "./types";
 
 export interface GridProps extends HTMLAttributes<HTMLDivElement> {
@@ -143,7 +144,7 @@ export interface StyleProps extends HTMLAttributes<HTMLDivElement> {
   bottomLeftRadius?: RadiusSize;
   bottomRightRadius?: RadiusSize;
   radius?: RadiusSize | `${RadiusSize}-${RadiusNest}`;
-  shadow?: ShadowSize;
+  shadow?: ShadowSize | ShadowCard;
   cursor?: CSSProperties["cursor"] | "interactive";
 }
 

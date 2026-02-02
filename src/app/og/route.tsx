@@ -14,6 +14,11 @@ export async function GET(request: Request) {
   const fontSora = fetch(new URL("../../../public/fonts/Sora-VariableFont_wght.ttf", import.meta.url)).then((res) =>
     res.arrayBuffer(),
   );
+
+  const fontManrope = fetch(new URL("../../../public/fonts/Manrope-VariableFont_wght.ttf", import.meta.url)).then((res) =>
+    res.arrayBuffer(),
+  );
+
   const fontData = await fontSora;
 
   return new ImageResponse(

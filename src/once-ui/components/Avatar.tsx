@@ -73,7 +73,7 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
       if (src) {
         return (
           <SmartImage
-            radius="full"
+            radius="m-4"
             src={src}
             fill
             alt="Avatar"

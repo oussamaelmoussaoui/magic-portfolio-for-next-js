@@ -22,7 +22,7 @@ export function Posts({ range, columns = "1", thumbnail = false }: PostsProps) {
   return (
     <>
       {displayedBlogs.length > 0 && (
-        <Grid columns={columns} mobileColumns="1" fillWidth marginBottom="40" gap="m">
+        <Grid columns={columns} mobileColumns="1" fillWidth marginBottom="40" gap="m" className="">
           {displayedBlogs.map((post) => (
             <Post key={post.slug} post={post} thumbnail={thumbnail} />
           ))}

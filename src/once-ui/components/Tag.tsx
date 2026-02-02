@@ -18,7 +18,7 @@ interface TagProps extends React.ComponentProps<typeof Flex> {
 const Tag = forwardRef<HTMLDivElement, TagProps>(
   (
     {
-      variant = "neutral",
+      variant = "accent",
       size = "m",
       label = "",
       prefixIcon,

@@ -27,6 +27,7 @@ export default function Post({ post, thumbnail }: PostProps) {
         paddingY="12"
         paddingX="16"
         gap="32"
+        className="[box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] rounded-2xl bg-white"
       >
         {post.metadata.image && thumbnail && (
           <SmartImage
@@ -36,19 +37,22 @@ export default function Post({ post, thumbnail }: PostProps) {
             sizes="640px"
             border="neutral-alpha-weak"
             cursor="interactive"
-            radius="m"
+            radius="s"
             src={post.metadata.image}
             alt={"Thumbnail of " + post.metadata.title}
             aspectRatio="16 / 9"
           />
         )}
-        <Column position="relative" fillWidth gap="8" vertical="center">
+
+        <Column position="relative" fillWidth gap="8" vertical="center" className="">
           <Heading as="h2" variant="heading-strong-l" wrap="balance">
             {post.metadata.title}
           </Heading>
+
           <Text variant="label-default-s" onBackground="neutral-weak">
             {post.metadata.publishedAt && formatDate(post.metadata.publishedAt, false)}
           </Text>
+
           {tags.length > 0 && (
             <Flex gap="8">
               {tags.map((tag: string, index: number) =>

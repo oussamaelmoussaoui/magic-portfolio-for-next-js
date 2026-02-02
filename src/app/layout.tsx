@@ -4,14 +4,18 @@ import "@/once-ui/tokens/index.scss";
 import classNames from "classnames";
 
 import { Footer, Header, RouteGuard } from "@/components";
-import { baseURL, effects, style } from "@/app/resources";
+import { baseURL, display, effects, style } from "@/app/resources";
 
 import { Inter } from "next/font/google";
 import { Source_Code_Pro } from "next/font/google";
 import { Sora } from "next/font/google";
+import { Manrope } from "next/font/google"
 
 import { person, home } from "@/app/resources/content";
 import { Background, Column, Flex, ToastProvider } from "@/once-ui/components";
+
+import "./styles/globals.css";
+
 
 export async function generateMetadata() {
   return {
@@ -51,6 +55,12 @@ const SoraFont = Sora({
   subsets: ["latin"],
   display: "swap",
 });
+
+const ManropeFont = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  display: "swap",
+})
 
 type FontConfig = {
   variable: string;
@@ -92,8 +102,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       data-transition={style.transition}
       className={classNames(
         SoraFont.variable,
-        secondary ? secondary.variable : "",
-        tertiary ? tertiary.variable : "",
+        ManropeFont ? ManropeFont.variable : "",
         code.variable,
       )}
     >

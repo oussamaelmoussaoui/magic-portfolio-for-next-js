@@ -158,6 +158,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           />
           <div style={{ display: "none" }}>
             <input
+              title="input"
               type="checkbox"
               readOnly
               name="group[3492][1]"

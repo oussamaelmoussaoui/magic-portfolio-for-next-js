@@ -8,12 +8,19 @@ const person = {
   },
   role: "Web Developer",
   avatar: "/images/photo_finale.jpg",
-  location: "Africa/Casablanca", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "French", "Spanish", "Arabic"], // optional: Leave the array empty if you don't want to display languages
+  location: "Africa/Casablanca",
+  languages: ["English", "French", "Arabic"],
+  skills: {
+    webdev: ["HTML/CSS", "Javascript", "GSAP", "React.js", "Next.js", "Vercel"],
+    ml: ["Python", "TensorFlow", "SickitLearn"],
+    db: ["SQL", "MySQL", "Appwrite"],
+    cms: ["Wordpress", "WixStudio", "Shopify"],
+    nlp: ["NLP", "Ai"],
+  },
 };
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
@@ -52,43 +59,63 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Web developer and builder</>,
+  headline: <>After few hours, I build my own projects</>,
   subline: (
     <>
-      I am EL MOUSSAOUI Oussama, a Data Science & Cloud Computing engineer student and a web developer at <InlineCode> ENSAO </InlineCode>, 
-      where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+      I am EL MOUSSAOUI Oussama, a Data Science & Cloud Computing engineer student and a web
+      developer at <InlineCode> ENSAO </InlineCode>, where I craft intuitive <br /> user
+      experiences.
     </>
   ),
+};
+
+const work_sec = {
+  title: "Newest projects showcase",
+  description: (
+    <>A selection of my latest development projects, highlighting my skills and expertise.</>
+  ),
+  cta: "View all work",
+};
+
+const about_sec = {
+  title: "Who am I?",
+  description: (
+    <>
+      I'm Oussama, a web developer and Data Science & Cloud Computing engineer student based in
+      Oujda. I have a passion for creating elegant web solutions that simplify complex challenges.
+    </>
+  ),
+  cta: "About me",
 };
 
 const about = {
   label: "About",
   title: "About me",
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
-  
+
   tableOfContent: {
     display: true,
     subItems: false,
   },
-  
+
   avatar: {
     display: true,
   },
-  
+
   calendar: {
     display: true,
     link: "https://cal.com",
   },
-  
+
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Oussama is an Oujda-based web developer and data science and cloud computing
-        engineer student with a passion for transforming complex challenges
-        into simple, elegant web solutions. My work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Oussama is an Oujda-based web developer and data science and cloud computing engineer
+        student with a passion for transforming complex challenges into simple, elegant web
+        solutions. My work spans digital interfaces, interactive experiences, and the convergence of
+        design and technology.
       </>
     ),
   },
@@ -111,7 +138,7 @@ const about = {
         name: "1 Million Arabe Coders",
         timeframe: "2019 - 2020",
         description: <>Completed a full-stack web development course.</>,
-      }
+      },
     ],
   },
 
@@ -157,17 +184,17 @@ const about = {
         role: "Store Creator & Manager",
         achievements: [
           <>
-            Building good looking Stores using <InlineCode>Shopify</InlineCode> with free and premium themes
-            that responds on the brand's needs.
+            Building good looking Stores using <InlineCode>Shopify</InlineCode> with free and
+            premium themes that responds on the brand's needs.
           </>,
           <>
-            Setup and managed multiple Shopify stores, optimizing product listings and
-            improving conversion rates through A/B testing and user feedback.
+            Setup and managed multiple Shopify stores, optimizing product listings and improving
+            conversion rates through A/B testing and user feedback.
           </>,
           <>
-            Payment integration and shipping setup for the stores, ensuring a smooth
-            customer experience from browsing to checkout.
-          </>
+            Payment integration and shipping setup for the stores, ensuring a smooth customer
+            experience from browsing to checkout.
+          </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
@@ -191,7 +218,6 @@ const about = {
           },
         ],
       },
-      
     ],
   },
 
@@ -201,10 +227,7 @@ const about = {
     skills: [
       {
         title: "HTML/CSS",
-        description: 
-        <>
-          The basics of any website! So of course I know them by heart.
-        </>,
+        description: <>The basics of any website! So of course I know them by heart.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
@@ -223,10 +246,7 @@ const about = {
       },
       {
         title: "Javascript / GSAP",
-        description: 
-        <>
-          First programming language to master for any web developer.
-        </>,
+        description: <>First programming language to master for any web developer.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
@@ -239,46 +259,50 @@ const about = {
       },
       {
         title: "Next.js",
-        description: 
-        <>
-          We mostly need a framework for building server-rendered React applications, So <InlineCode> Next.js </InlineCode> is the greatest choice.
-        </>,
+        description: (
+          <>
+            We mostly need a framework for building server-rendered React applications, So{" "}
+            <InlineCode> Next.js </InlineCode> is the greatest choice.
+          </>
+        ),
         images: [],
       },
       {
         title: "Python",
-        description: 
-        <>
-          Python is a versatile programming language used for web development, data analysis, artificial intelligence, and more.
-          So here is a weather app That I built using <InlineCode>Flask</InlineCode> and <InlineCode>OpenWeatherMap API</InlineCode>.
-        </>,
+        description: (
+          <>
+            Python is a versatile programming language used for web development, data analysis,
+            artificial intelligence, and more. So here is a weather app That I built using{" "}
+            <InlineCode>Flask</InlineCode> and <InlineCode>OpenWeatherMap API</InlineCode>.
+          </>
+        ),
         images: [],
       },
       {
         title: "SQL : MySQL",
-        description: 
-        <>
-          Being a Data Scientist requires a strong foundation in SQL for data manipulation and analysis. Here is an academic project that I built using <InlineCode>MySQL</InlineCode>.
-        </>,
+        description: (
+          <>
+            Being a Data Scientist requires a strong foundation in SQL for data manipulation and
+            analysis. Here is an academic project that I built using <InlineCode>MySQL</InlineCode>.
+          </>
+        ),
         images: [],
       },
       {
         title: "JAVA OOP",
-        description: 
-        <>
-          Object-Oriented Programming (OOP) is a programming paradigm based on the concept of "objects". Here are some projects that I built using <InlineCode>JAVA</InlineCode>.
-        </>,
+        description: (
+          <>
+            Object-Oriented Programming (OOP) is a programming paradigm based on the concept of
+            "objects". Here are some projects that I built using <InlineCode>JAVA</InlineCode>.
+          </>
+        ),
         images: [],
       },
       {
         title: "Shopify",
-        description: 
-        <>
-          Building e-commerce solutions with Shopify. 
-        </>,
+        description: <>Building e-commerce solutions with Shopify.</>,
         images: [],
       },
-
     ],
   },
 };
@@ -333,4 +357,4 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, blog, work, gallery, work_sec, about_sec };

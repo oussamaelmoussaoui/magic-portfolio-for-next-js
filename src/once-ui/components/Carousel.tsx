@@ -21,7 +21,7 @@ const Carousel: React.FC<CarouselProps> = ({
   indicator = "line",
   aspectRatio = "16 / 9",
   sizes,
-  revealedByDefault = false,
+  revealedByDefault = true,
   ...rest
 }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -73,9 +73,22 @@ const Carousel: React.FC<CarouselProps> = ({
     };
   }, [revealedByDefault, initialTransition]);
 
+  useEffect(() => {
+    if (images.length > 1) {
+      const interval = setInterval(() => {
+        const nextIndex = (activeIndex + 1) % images.length;
+        handleControlClick(nextIndex);
+      }, 5000); // ⏳ change every 3s
+
+      return () => clearInterval(interval);
+    }
+  }, [activeIndex, images]);
+
+
   if (images.length === 0) {
     return null;
   }
+
 
   return (
     <Flex fillWidth gap="12" direction="column" {...rest}>
@@ -102,6 +115,7 @@ const Carousel: React.FC<CarouselProps> = ({
           }}
         />
       </RevealFx>
+      
       {images.length > 1 && (
         <>
           {indicator === "line" ? (
@@ -130,13 +144,13 @@ const Carousel: React.FC<CarouselProps> = ({
                   key={index}
                   style={{
                     border: activeIndex === index ? "2px solid var(--brand-solid-strong)" : "none",
-                    borderRadius: "var(--radius-m-nest-4)",
+                    borderRadius: "xs",
                     transition: "border 0.3s ease",
                   }}
                   cursor="interactive"
                   padding="4"
-                  width="80"
-                  height="80"
+                  width="48"
+                  height="40"
                 >
                   <SmartImage
                     alt={image.alt}
@@ -145,7 +159,7 @@ const Carousel: React.FC<CarouselProps> = ({
                     src={image.src}
                     cursor="interactive"
                     radius="m"
-                    transition="macro-medium"
+                    transition="macro-short"
                   />
                 </Flex>
               ))}

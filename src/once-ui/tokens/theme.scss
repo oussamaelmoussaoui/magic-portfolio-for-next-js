@@ -1,8 +1,8 @@
 :root {
     /* FONT FAMILY */
-    --font-family-body:     var(--font-sora);
-    --font-family-heading:  var(--font-secondary);
-    --font-family-label:    var(--font-tertiary);
+    --font-family-body:     var(--font-manrope);
+    --font-family-heading:  var(--font-sora);
+    --font-family-label:    var();
     --font-family-code:     var(--font-code);
 
     --font-size-heading-multiplier:   1;
@@ -450,9 +450,9 @@
 
 [data-theme="dark"][data-solid="color"],
 [data-theme="dark"] [data-solid="color"] {
-    --brand-solid-strong:         var(--function-brand-500);
-    --brand-solid-medium:         var(--function-brand-400);
-    --brand-solid-weak:           var(--function-brand-300);
+    --brand-solid-strong:         var(--function-brand-700);
+    --brand-solid-medium:         var(--function-brand-300);
+    --brand-solid-weak:           var(--function-brand-100);
 
     --brand-on-solid-strong:      var(--static-white);      
     --brand-on-solid-weak:        var(--function-brand-900);
@@ -480,9 +480,9 @@
 
 [data-theme="light"][data-solid="color"],
 [data-theme="light"] [data-solid="color"] {
-    --brand-solid-strong:         var(--function-brand-600);
+    --brand-solid-strong:         var(--function-brand-700);
     --brand-solid-medium:         var(--function-brand-500);
-    --brand-solid-weak:           var(--function-brand-400);
+    --brand-solid-weak:           var(--function-brand-300);
   
     --brand-on-solid-strong:      var(--static-white);      
     --brand-on-solid-weak:        var(--function-brand-1000);
