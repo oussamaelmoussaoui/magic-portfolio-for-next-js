@@ -1,5 +1,4 @@
 import React from "react";
-import { Images, Snail } from 'lucide-react';
 
 import Image from "next/image";
 
@@ -8,17 +7,16 @@ import { Projects } from "@/components/work/Projects";
 
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person, newsletter, work_sec, about_sec } from "@/app/resources/content";
-import { home_page, about_page, work_page } from "@/app/resources/section_content"
+import { home_page, about_page, work_page } from "@/app/resources/section_content";
 
 import { Posts } from "@/components/blog/Posts";
 import { CarouselCards } from "@/components/CarouselCards";
 import { Orbits } from "@/components/Orbits";
-import { AnimatedListDemo } from "@/components/AnimatedListDemo"
-
+import { AnimatedListDemo } from "@/components/AnimatedListDemo";
 
 export async function generateMetadata() {
-  const title = home.title;
-  const description = home.description;
+  const title = `${person.name} — Web Developer & Data Science Engineer`;
+  const description = `Portfolio of ${person.name}, engineering student in Data Science & Cloud Computing at ENSA Oujda...`;
   const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
 
   return {
@@ -54,8 +52,10 @@ export default function Home() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "WebPage",
-            name: home.title,
+            "@type": "Person",
+            name: person.name,
+            jobTitle: person.role,
+            sameAs: ["https://github.com/...", "https://linkedin.com/..."],
             description: home.description,
             url: `https://${baseURL}`,
             image: `${baseURL}/og?title=${encodeURIComponent(home.title)}`,
@@ -70,31 +70,29 @@ export default function Home() {
           }),
         }}
       />
-      
-      <Column fillWidth paddingY="l" gap="m" height={40} >
-        <Column maxWidth="xl" fillWidth fillHeight vertical="center">
 
+      <Column fillWidth paddingY="l" gap="m" height={40}>
+        <Column maxWidth="xl" fillWidth fillHeight vertical="center">
           <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="m">
-            <Heading wrap="balance" align="center" className="text-6xl font-semibold"> 
+            <Heading wrap="balance" align="center" className="text-6xl font-semibold">
               {home_page.hero_sec.sec_title}
             </Heading>
           </RevealFx>
 
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="m">
-            <Text wrap="balance" align="center" onBackground="neutral-medium" variant="body-default-xl">
+            <Text
+              wrap="balance"
+              align="center"
+              onBackground="neutral-medium"
+              variant="body-default-xl"
+            >
               {home_page.hero_sec.sec_description}
             </Text>
           </RevealFx>
 
           <RevealFx translateY="12" delay={0.4} horizontal="center">
             <Flex gap="12" vertical="center">
-              <Button
-                id="about"
-                data-border="rounded"
-                href="/about"
-                variant="primary"
-                size="m"
-              >
+              <Button id="about" data-border="rounded" href="/about" variant="primary" size="m">
                 <Flex gap="8" vertical="center">
                   {about.avatar.display && (
                     <Avatar
@@ -110,46 +108,44 @@ export default function Home() {
               <Button
                 id="resume-download"
                 data-border="rounded"
-                href="/about"
+                href="/resume.pdf"
                 variant="secondary"
                 size="m"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Flex gap="8" vertical="center">
-                  Download resume 
+                  Download resume
                 </Flex>
               </Button>
             </Flex>
           </RevealFx>
-
-
         </Column>
       </Column>
 
-      <CarouselCards/>
+      <CarouselCards />
 
       <RevealFx translateY="16" delay={0.6}>
-        <Column fitWidth vertical="center"  padding="m" radius="l" marginX="s" >
+        <Column fitWidth vertical="center" padding="m" radius="l" marginX="s">
           <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="m">
-            <Heading wrap="balance" align="center" className="text-6xl font-semibold"> 
+            <Heading wrap="balance" align="center" className="text-6xl font-semibold">
               {home_page.work_sec.sec_title}
             </Heading>
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="m">
-            <Text wrap="balance" align="center" onBackground="neutral-medium" variant="body-default-xl">
+            <Text
+              wrap="balance"
+              align="center"
+              onBackground="neutral-medium"
+              variant="body-default-xl"
+            >
               {home_page.work_sec.sec_description}
             </Text>
           </RevealFx>
           <Projects range={[1, 1]} />
           <RevealFx translateY="12" delay={0.4} horizontal="center">
             <Flex gap="12" vertical="center">
-              <Button
-                id="about"
-                data-border="rounded"
-                href="/about"
-                variant="primary"
-                size="m"
-                
-              >
+              <Button id="about" data-border="rounded" href="/work" variant="primary" size="m">
                 <Flex gap="8" vertical="center">
                   {home_page.work_sec.cta}
                 </Flex>
@@ -159,10 +155,9 @@ export default function Home() {
         </Column>
       </RevealFx>
 
-      <Column fillWidth paddingY="xl" gap="m" height={40} >
-        
+      <Column fillWidth paddingY="xl" gap="m" height={40}>
         <Flex maxWidth="xl" fillWidth fillHeight vertical="center" gap="32">
-          <RevealFx translateY="4" horizontal="center" >
+          <RevealFx translateY="4" horizontal="center">
             <Image
               src="/images/mwa.jpg"
               alt="About me image"
@@ -171,35 +166,54 @@ export default function Home() {
               className="rounded-lg shadow-lg"
             />
           </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth fillHeight vertical="center" horizontal="start">
+          <RevealFx
+            translateY="8"
+            delay={0.2}
+            fillWidth
+            fillHeight
+            vertical="center"
+            horizontal="start"
+          >
             <Flex gap="16" direction="column">
               <Heading wrap="balance" align="start" className="text-6xl font-semibold text-blue ">
                 {home_page.about_sec.sec_title}
               </Heading>
-              <Text wrap="balance" align="start" onBackground="neutral-medium" variant="body-default-xl">
+              <Text
+                wrap="balance"
+                align="start"
+                onBackground="neutral-medium"
+                variant="body-default-xl"
+              >
                 {home_page.about_sec.sec_description}
               </Text>
             </Flex>
           </RevealFx>
         </Flex>
-
-        
-
       </Column>
 
-      <Flex align="center" vertical="center" horizontal="space-between" fillWidth mobileDirection="column">
-        
+      <Flex
+        align="center"
+        vertical="center"
+        horizontal="space-between"
+        fillWidth
+        mobileDirection="column"
+      >
         <Flex flex={2} gap="16" direction="column">
-          <Heading wrap="balance" align="start"  className="text-6xl font-semibold"> 
+          <Heading wrap="balance" align="start" className="text-6xl font-semibold">
             {home_page.skills_sec.sec_title}
           </Heading>
-          <Text wrap="balance" align="start" onBackground="neutral-medium" variant="body-default-xl">
+          <Text
+            wrap="balance"
+            align="start"
+            onBackground="neutral-medium"
+            variant="body-default-xl"
+          >
             {home_page.skills_sec.sec_description}
           </Text>
           <Button
             id="skills"
             data-border="rounded"
-            href="/about"
+            href="/about#Technical Skills"
             variant="primary"
             size="m"
           >
@@ -208,41 +222,51 @@ export default function Home() {
         </Flex>
 
         <Flex flex={1}>
-          <Orbits/>
+          <Orbits />
         </Flex>
-        
       </Flex>
 
-      <Flex align="center" vertical="center" horizontal="space-between" fillWidth mobileDirection="column" gap="32">
+      <Flex
+        align="center"
+        vertical="center"
+        horizontal="space-between"
+        fillWidth
+        mobileDirection="column"
+        gap="32"
+      >
         <Flex flex={1}>
-          <AnimatedListDemo/>
+          <AnimatedListDemo />
         </Flex>
         <Flex flex={1} gap="16" direction="column">
-          <Heading wrap="balance" align="start"  className="text-6xl font-semibold"> 
+          <Heading wrap="balance" align="start" className="text-6xl font-semibold">
             {home_page.activities_sec.sec_title}
           </Heading>
-          <Text wrap="balance" align="start" onBackground="neutral-medium" variant="body-default-xl">
+          <Text
+            wrap="balance"
+            align="start"
+            onBackground="neutral-medium"
+            variant="body-default-xl"
+          >
             {home_page.activities_sec.sec_description}
           </Text>
           <Button
             id="skills"
             data-border="rounded"
-            href="/about"
+            href="/about#Beyond the Classroom"
             variant="primary"
             size="m"
           >
             {home_page.activities_sec.cta}
           </Button>
         </Flex>
-        
       </Flex>
 
-      <Column fillWidth paddingY="xl" gap="l" align="center" height={60} >
+      <Column fillWidth paddingY="xl" gap="l" align="center" height={60}>
         {routes["/blog"] && (
           <Flex fillWidth gap="24" mobileDirection="column" horizontal="space-between">
             <Flex flex={2} direction="column">
               <RevealFx translateY="4" horizontal="start">
-                <Heading wrap="balance" align="start"  className="text-6xl font-semibold">
+                <Heading wrap="balance" align="start" className="text-6xl font-semibold">
                   {home_page.blog_sec.sec_title}
                 </Heading>
               </RevealFx>
@@ -258,13 +282,11 @@ export default function Home() {
               </RevealFx>
             </Flex>
           </Flex>
-        )} 
+        )}
       </Column>
 
-      
-
       {/* <Projects range={[1, 2]} /> */}
-{/*       {newsletter.display && <Mailchimp newsletter={newsletter} />} */}
+      {/*       {newsletter.display && <Mailchimp newsletter={newsletter} />} */}
     </Column>
   );
 }

@@ -15,7 +15,7 @@ import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import { person, about, social } from "@/app/resources/content";
 import { about_page } from "@/app/resources/section_content";
-import {StackGrid} from "@/components/StackGrid"
+import { StackGrid } from "@/components/StackGrid";
 import Link from "next/link";
 
 export async function generateMetadata() {
@@ -75,6 +75,7 @@ export default function About() {
       items: about_page.activities.career.map((career) => career.role),
     },
   ];
+
   return (
     <Column maxWidth="m">
       <script
@@ -87,7 +88,7 @@ export default function About() {
             name: person.name,
             jobTitle: person.role,
             description: about_page.intro.description,
-            url: `https://${baseURL}/about_page`,
+            url: `https://${baseURL}/about`,
             image: `${baseURL}/images/${person.avatar}`,
             sameAs: social
               .filter((item) => item.link && !item.link.startsWith("mailto:")) // Filter out empty links and email links
@@ -133,10 +134,10 @@ export default function About() {
                   <Icon onBackground="accent-weak" name="globe" />
                   {person.location}
                 </Flex> */}
-                
+
                 {/* <Flex direction="column" gap="16">
                   {Object.entries(person.skills).map(([category, items], index) => ( */}
-                    {/* <div key={index}>
+                {/* <div key={index}>
                       <Text variant="heading-default-s" onBackground="neutral-weak">
                         {category.toUpperCase()}
                       </Text>
@@ -148,7 +149,7 @@ export default function About() {
                         ))}
                       </Flex>
                     </div> */}
-                  {/* ))}
+                {/* ))}
                   
                 </Flex> */}
 
@@ -162,7 +163,7 @@ export default function About() {
                   </Flex>
                 )}
               </Column>
-              
+
               <Column
                 id={about_page.intro.title}
                 fillWidth
@@ -208,41 +209,47 @@ export default function About() {
                 </Text>
 
                 {social.length > 0 && (
-                  <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth>
+                  <Flex
+                    className={styles.blockAlign}
+                    paddingTop="20"
+                    paddingBottom="8"
+                    gap="8"
+                    wrap
+                    horizontal="center"
+                    fitWidth
+                  >
                     {social.map(
                       (item) =>
                         item.link && (
-                            <>
-                                <Button
-                                    className="s-flex-hide"
-                                    key={item.name}
-                                    href={item.link}
-                                    prefixIcon={item.icon}
-                                    label={item.name}
-                                    size="s"
-                                    variant="secondary"
-                                />
-                                <IconButton
-                                    className="s-flex-show"
-                                    size="l"
-                                    key={`${item.name}-icon`}
-                                    href={item.link}
-                                    icon={item.icon}
-                                    variant="secondary"
-                                />
-                            </>
-                        ),
+                          <>
+                            <Button
+                              className="s-flex-hide"
+                              key={item.name}
+                              href={item.link}
+                              prefixIcon={item.icon}
+                              label={item.name}
+                              size="s"
+                              variant="secondary"
+                            />
+                            <IconButton
+                              className="s-flex-show"
+                              size="l"
+                              key={`${item.name}-icon`}
+                              href={item.link}
+                              icon={item.icon}
+                              variant="secondary"
+                            />
+                          </>
+                        )
                     )}
                   </Flex>
                 )}
               </Column>
             </Flex>
-          
           </Column>
         )}
-        
+
         <Column className={styles.blockAlign} flex={9} fillWidth maxWidth={50}>
-          
           {about_page.intro.display && (
             <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
               {about_page.intro.description}
@@ -251,7 +258,12 @@ export default function About() {
 
           {about_page.studies.display && (
             <>
-              <Heading as="h2" id={about_page.studies.title} variant="display-strong-s" marginBottom="m">
+              <Heading
+                as="h2"
+                id={about_page.studies.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
                 {about_page.studies.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
@@ -271,7 +283,12 @@ export default function About() {
 
           {about_page.work.display && (
             <>
-              <Heading as="h2" id={about_page.work.title} variant="display-strong-s" marginBottom="m">
+              <Heading
+                as="h2"
+                id={about_page.work.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
                 {about_page.work.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
@@ -376,40 +393,55 @@ export default function About() {
                     )}
                   </Column>
                 ))} */}
-                <StackGrid/>
-
+                <StackGrid />
               </Column>
             </>
           )}
 
-          {about_page.activities.display && (
-            <>
-              <Heading as="h2" id={about_page.activities.title} variant="display-strong-s" marginBottom="m">
-                {about_page.activities.title}
-              </Heading>
-              <Flex direction="column" fillWidth gap="l" marginBottom="40">
-                {about_page.activities.career.map((career, index) => (
-                  <Flex direction="row" key={`${career.role}-${index}`} fillWidth gap="8">
-                    <Link href={career.link} className="group no-underline">
-                      <Column>
-                        <Text id={career.role} variant="heading-strong-l" className="text-black group-hover:text-blue-600 duration-300 easr-in-out no-underline">
-                          {career.role}
-                        </Text>
-                        <Text variant="heading-default-xs" onBackground="neutral-weak" className="no-underline">
-                          {career.club}
-                        </Text>
-                        <Text variant="heading-default-xs" onBackground="neutral-weak" className="no-underline">
-                          {career.year}
-                        </Text>
-                      </Column>
-                    </Link>
-                  </Flex>
-                ))}
-              </Flex>
-            </>
-          )}
-        </Column>
+          {about_page.activities.career.map((career, index) => {
+            const content = (
+              <Column>
+                <Text
+                  id={career.role}
+                  variant="heading-strong-l"
+                  className={
+                    career.link
+                      ? "text-black group-hover:text-blue-600 duration-300 ease-in-out no-underline"
+                      : "text-black no-underline"
+                  }
+                >
+                  {career.role}
+                </Text>
+                <Text
+                  variant="heading-default-xs"
+                  onBackground="neutral-weak"
+                  className="no-underline"
+                >
+                  {career.club}
+                </Text>
+                <Text
+                  variant="heading-default-xs"
+                  onBackground="neutral-weak"
+                  className="no-underline"
+                >
+                  {career.year}
+                </Text>
+              </Column>
+            );
 
+            return (
+              <Flex direction="row" key={`${career.role}-${index}`} fillWidth gap="8">
+                {career.link ? (
+                  <Link href={career.link} className="group no-underline">
+                    {content}
+                  </Link>
+                ) : (
+                  <div>{content}</div>
+                )}
+              </Flex>
+            );
+          })}
+        </Column>
       </Flex>
     </Column>
   );

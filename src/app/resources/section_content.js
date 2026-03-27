@@ -1,5 +1,5 @@
 import { person } from "@/app/resources/content";
-import { InlineCode, Logo } from "@/once-ui/components";
+import { InlineCode, logo } from "@/once-ui/components";
 
 const home_page = {
   label: "Home",
@@ -55,8 +55,8 @@ const home_page = {
 
 const about_page = {
   label: "About me",
-  title: "About me",
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  title: `About ${person.name} — Data Science Engineer & Web Developer`,
+  description: `Learn more about ${person.name}, an engineering student in Data Science & Cloud Computing at ENSA Oujda, web developer, and active club leader.`,
 
   tableOfContent: {
     display: true,
@@ -68,7 +68,7 @@ const about_page = {
   },
 
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
 
@@ -133,36 +133,36 @@ const about_page = {
         role: "Treasurer",
         club: "ADE – Student Association",
         year: "2024 – Present",
-        Logo: "/images/clubs/logo-sportif-black.png",
+        logo: "/images/clubs/logo-sportif-black.png",
         link: "https://www.instagram.com/p/DHrWyH1M_4i/?img_index=2",
       },
       {
         role: "Head of Events Direction Unit",
         club: "DSCC Club (Data Science & Cloud Computing)",
         year: "2024 – 2025",
-        Logo: "/images/clubs/dscc.PNG",
+        logo: "/images/clubs/dscc.PNG",
         link: "https://www.instagram.com/p/DOotMz2AnoX/?img_index=2",
       },
       {
         role: "Vice President",
         club: "ENSAO Sports Club",
         year: "2024 – 2025",
-        Logo: "/images/clubs/logo-sportif-black.png",
+        logo: "/images/clubs/logo-sportif-black.png",
         link: "https://www.instagram.com/p/DAZGSToN1EF/?img_index=3",
       },
       {
         role: "Head of Sponsorship Unit",
         club: "Minds & Machines",
         year: "2024 – 2025",
-        Logo: "/images/clubs/minds and machines.png",
-        link: "",
+        logo: "/images/clubs/minds and machines.png",
+        link: null,
       },
       {
         role: "Head of Media Unit",
         club: "ENSAO Sports Club",
         year: "2023 – 2024",
-        Logo: "/images/clubs/logo-sportif-black.png",
-        link: "",
+        logo: "/images/clubs/logo-sportif-black.png",
+        link: null,
       },
     ],
   },

@@ -6,21 +6,23 @@ import classNames from "classnames";
 import { Footer, Header, RouteGuard } from "@/components";
 import { baseURL, display, effects, style } from "@/app/resources";
 
-import { Inter } from "next/font/google";
 import { Source_Code_Pro } from "next/font/google";
 import { Sora } from "next/font/google";
-import { Manrope } from "next/font/google"
+import { Manrope } from "next/font/google";
 
 import { person, home } from "@/app/resources/content";
 import { Background, Column, Flex, ToastProvider } from "@/once-ui/components";
 
 import "./styles/globals.css";
 
-
 export async function generateMetadata() {
   return {
     metadataBase: new URL(`https://${baseURL}`),
-    title: home.title,
+    title: {
+      default: `${person.name} — Web Developer & Data Science Engineer`,
+      template: `%s | ${person.firstName}'s Portfolio`,
+    },
+
     description: home.description,
     openGraph: {
       title: `${person.firstName}'s Portfolio`,
@@ -41,14 +43,11 @@ export async function generateMetadata() {
         "max-snippet": -1,
       },
     },
+    alternates: {
+      canonical: `https://${baseURL}`,
+    },
   };
 }
-
-const primary = Inter({
-  variable: "--font-primary",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const SoraFont = Sora({
   variable: "--font-sora",
@@ -60,7 +59,7 @@ const ManropeFont = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
   display: "swap",
-})
+});
 
 type FontConfig = {
   variable: string;
@@ -90,6 +89,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <Flex
       as="html"
       lang="en"
+      dir="ltr"
       background="page"
       data-neutral={style.neutral}
       data-brand={style.brand}
@@ -103,7 +103,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       className={classNames(
         SoraFont.variable,
         ManropeFont ? ManropeFont.variable : "",
-        code.variable,
+        code.variable
       )}
     >
       <ToastProvider>
