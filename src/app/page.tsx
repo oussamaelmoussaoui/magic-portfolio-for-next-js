@@ -155,8 +155,15 @@ export default function Home() {
         </Column>
       </RevealFx>
 
-      <Column fillWidth paddingY="xl" gap="m" height={40}>
-        <Flex maxWidth="xl" fillWidth fillHeight vertical="center" gap="32">
+      <Column fillWidth paddingY="xl" gap="m" fillHeight>
+        <Flex
+          maxWidth="xl"
+          fillWidth
+          fillHeight
+          vertical="center"
+          gap="32"
+          mobileDirection="column"
+        >
           <RevealFx translateY="4" horizontal="center">
             <Image
               src="/images/mwa.jpg"
@@ -198,7 +205,7 @@ export default function Home() {
         fillWidth
         mobileDirection="column"
       >
-        <Flex flex={2} gap="16" direction="column">
+        <Flex flex={1} gap="16" direction="column">
           <Heading wrap="balance" align="start" className="text-6xl font-semibold">
             {home_page.skills_sec.sec_title}
           </Heading>
@@ -221,7 +228,7 @@ export default function Home() {
           </Button>
         </Flex>
 
-        <Flex flex={1}>
+        <Flex flex={1} gap="16" direction="column" className="relative">
           <Orbits />
         </Flex>
       </Flex>
@@ -261,9 +268,15 @@ export default function Home() {
         </Flex>
       </Flex>
 
-      <Column fillWidth paddingY="xl" gap="l" align="center" height={60}>
+      <Column fillWidth paddingY="xl" gap="l" align="center" horizontal="center">
         {routes["/blog"] && (
-          <Flex fillWidth gap="24" mobileDirection="column" horizontal="space-between">
+          <Flex
+            fillWidth
+            gap="24"
+            mobileDirection="column"
+            horizontal="space-between"
+            align="center"
+          >
             <Flex flex={2} direction="column">
               <RevealFx translateY="4" horizontal="start">
                 <Heading wrap="balance" align="start" className="text-6xl font-semibold">

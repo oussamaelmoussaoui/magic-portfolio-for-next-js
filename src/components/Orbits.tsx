@@ -3,7 +3,7 @@ import { File, Settings, Search } from "lucide-react";
 
 export function Orbits() {
   return (
-    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden">
+    <div className="relative flex h-[500px] w-full flex-col items-center justify-center">
       <OrbitingCircles>
         <Icons.java />
         <Icons.javascript />

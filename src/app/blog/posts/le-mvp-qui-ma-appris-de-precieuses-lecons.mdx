@@ -1,0 +1,243 @@
+---
+title: "Le MVP qui m'a appris de precieuses leçons"
+publishedAt: "2026-05-06"
+image: "/images/gallery/ai4m.png"
+summary: "Ma première participation dans une compétition des Agents IA au Maroc"
+tag: "Journal"
+---
+
+# Construire WatiQ : retour d’expérience sur un assistant juridique IA pour le Maroc
+
+Après ma participation à **AI4Morocco: Agents Edition**, organisée sous le thème **“Building Autonomous AI Agents for Real Impact in Morocco”**, j’ai voulu prendre le temps de revenir sur l’une des expériences les plus enrichissantes de mon parcours : la conception de **WatiQ**, un assistant juridique intelligent basé sur l’intelligence artificielle.
+
+Ce projet n’était pas seulement un exercice technique. C’était une opportunité de réfléchir à une vraie problématique sociale : comment rendre l’information juridique marocaine plus accessible, plus compréhensible et plus fiable pour les citoyens ?
+
+Avec mon équipe, nous avons travaillé sur une solution qui combine intelligence artificielle, recherche documentaire, architecture multi-agents et logique d’orientation utilisateur. Cette expérience m’a permis de mieux comprendre ce que signifie réellement construire une solution IA à impact.
+
+---
+
+## 1. Le contexte : AI4Morocco et le défi des agents autonomes
+
+AI4Morocco: Agents Edition avait pour thème :
+
+> **Building Autonomous AI Agents for Real Impact in Morocco**
+
+Ce thème nous a poussés à ne pas penser uniquement à une application basée sur l’IA, mais à réfléchir à une solution capable d’avoir un impact réel dans un contexte marocain.
+
+L’objectif n’était pas simplement d’utiliser un modèle de langage ou de créer un chatbot impressionnant. Le vrai défi était de construire une solution utile, réaliste et adaptée à un problème concret.
+
+C’est dans ce contexte que nous avons choisi de travailler sur **WatiQ**, un assistant juridique intelligent pour accompagner les citoyens dans la compréhension de leurs droits et démarches.
+
+---
+
+## 2. Pourquoi le domaine juridique ?
+
+Le domaine juridique est souvent difficile à comprendre pour une grande partie des citoyens. Les textes de loi sont généralement longs, techniques et rédigés dans un langage qui n’est pas toujours accessible.
+
+Beaucoup de personnes peuvent rencontrer des difficultés à :
+
+- comprendre leurs droits ;
+- identifier les textes juridiques liés à leur situation ;
+- savoir quelle démarche suivre ;
+- savoir vers quelle institution se diriger ;
+- distinguer une information fiable d’une réponse approximative.
+
+Dans ce contexte, l’IA peut jouer un rôle important, non pas pour remplacer les professionnels du droit, mais pour faciliter l’accès à l’information juridique et aider les citoyens à mieux comprendre leur situation.
+
+L’idée principale de WatiQ était donc de créer un assistant capable de rendre l’information juridique plus claire, plus structurée et plus accessible.
+
+---
+
+## 3. Qu’est-ce que WatiQ ?
+
+**WatiQ** est un assistant juridique intelligent conçu pour aider les utilisateurs à poser des questions juridiques en langage naturel et recevoir des réponses structurées, contextualisées et basées sur des textes juridiques.
+
+L’objectif de WatiQ est d’aider l’utilisateur à :
+
+- comprendre une situation juridique ;
+- obtenir une réponse claire et simplifiée ;
+- identifier les références juridiques pertinentes ;
+- recevoir une orientation sur les démarches possibles ;
+- savoir vers quelle institution se diriger selon son cas.
+
+WatiQ n’a pas pour objectif de remplacer un avocat ou un expert juridique. Son rôle est plutôt d’offrir un premier niveau d’orientation et de rendre l’information juridique plus accessible.
+
+---
+
+## 4. Pourquoi un simple chatbot ne suffit pas ?
+
+L’un des premiers constats du projet était qu’un chatbot généraliste n’est pas suffisant pour traiter correctement des questions juridiques.
+
+Dans un domaine sensible comme le droit, une réponse générée sans source fiable peut être problématique. Le risque principal est celui des hallucinations : le modèle peut produire une réponse convaincante, mais incorrecte ou non fondée juridiquement.
+
+Pour cette raison, nous avons orienté WatiQ vers une approche plus fiable, basée sur la recherche d’informations dans des documents juridiques.
+
+La question principale n’était donc pas :
+
+> Est-ce que le modèle peut répondre ?
+
+Mais plutôt :
+
+> Est-ce que la réponse peut être reliée à des sources juridiques fiables ?
+
+Cette différence a fortement influencé notre architecture technique.
+
+---
+
+## 5. L’approche technique : RAG et architecture multi-agents
+
+Pour concevoir WatiQ, nous avons exploré une architecture basée sur deux idées principales :
+
+1. **RAG — Retrieval-Augmented Generation**
+2. **Architecture multi-agents**
+
+L’approche RAG permet au système de chercher d’abord des informations pertinentes dans une base documentaire avant de générer une réponse. Cela permet de réduire les hallucinations et d’améliorer la fiabilité des réponses.
+
+Au lieu de demander directement au modèle de répondre à partir de ses connaissances générales, le système cherche d’abord les passages ou articles juridiques les plus pertinents, puis les utilise pour formuler une réponse.
+
+L’architecture multi-agents permet, quant à elle, de diviser le raisonnement en plusieurs responsabilités.
+
+Dans WatiQ, chaque agent peut avoir un rôle précis :
+
+### Orchestrator Agent
+
+L’orchestrator analyse la question de l’utilisateur et décide quels agents doivent être activés. Il joue le rôle de coordinateur principal du système.
+
+### Legal RAG Agent
+
+Cet agent est responsable de la recherche des textes juridiques pertinents. Il récupère les passages les plus proches de la question posée par l’utilisateur.
+
+### Locator Agent
+
+Cet agent aide à identifier les institutions ou services vers lesquels l’utilisateur peut être orienté selon sa situation.
+
+### Action Planner Agent
+
+Cet agent transforme la réponse juridique en étapes plus compréhensibles et plus pratiques pour l’utilisateur.
+
+### Final Response Layer
+
+Cette couche finale reformule les informations récupérées pour produire une réponse claire, structurée et adaptée à l’utilisateur.
+
+Cette architecture nous a permis de penser WatiQ non pas comme un simple chatbot, mais comme un système d’assistance plus organisé, où chaque composant contribue à une partie spécifique de la réponse.
+
+---
+
+## 6. Les défis rencontrés
+
+La conception de WatiQ nous a confrontés à plusieurs défis importants.
+
+### Comprendre le vrai besoin utilisateur
+
+Le premier défi était de bien définir le problème. Au début, il est facile de vouloir construire une solution très large, capable de répondre à tous les cas possibles.
+
+Mais un bon projet IA commence par une problématique claire. Nous avons donc dû préciser notre cible, notre cas d’usage et la valeur réelle que WatiQ pouvait apporter.
+
+L’objectif n’était pas de couvrir tout le droit marocain, mais de construire une base solide pour montrer comment l’IA peut aider à rendre l’information juridique plus accessible.
+
+### Travailler avec des textes juridiques complexes
+
+Les documents juridiques sont souvent longs, techniques et difficiles à structurer. Pour qu’un système RAG fonctionne correctement, il faut bien préparer les documents, les découper, les indexer et s’assurer que les passages récupérés sont réellement pertinents.
+
+Cette étape nous a montré que la qualité des données est aussi importante que le choix du modèle.
+
+### Réduire les hallucinations du modèle
+
+Dans un contexte juridique, les hallucinations représentent un vrai risque. Une réponse incorrecte peut induire l’utilisateur en erreur.
+
+Nous avons donc accordé une grande importance à la fiabilité des réponses, à la recherche documentaire et à la génération de réponses fondées sur des informations récupérées depuis les textes.
+
+### Construire une solution cohérente sous contrainte de temps
+
+Comme dans toute compétition, le temps était limité. Il fallait prendre rapidement des décisions techniques, prioriser les fonctionnalités essentielles et garder une vision claire du produit.
+
+Ce défi nous a appris à aller à l’essentiel, à éviter la complexité inutile et à construire une solution présentable, compréhensible et défendable.
+
+### Travailler efficacement en équipe
+
+Un autre défi important était le travail d’équipe. Construire une solution dans un temps limité demande une bonne communication, une répartition claire des tâches et une capacité à prendre des décisions rapidement.
+
+Les discussions, les ajustements et les moments de doute ont fait partie du processus. Mais c’est justement cette dynamique qui a rendu l’expérience aussi formatrice.
+
+---
+
+## 7. Les leçons apprises
+
+Cette expérience m’a appris plusieurs leçons importantes sur la construction de projets IA.
+
+### Un bon projet IA commence par un vrai problème
+
+La technologie ne doit pas être le point de départ. Avant de choisir un modèle, un framework ou une architecture, il faut comprendre le problème, les utilisateurs et le contexte.
+
+Dans le cas de WatiQ, la vraie question était : comment aider les citoyens à mieux comprendre l’information juridique ?
+
+### La fiabilité est essentielle dans les domaines sensibles
+
+Tous les projets IA n’ont pas les mêmes exigences. Dans un domaine comme le droit, il ne suffit pas de générer une réponse fluide. Il faut produire une réponse fiable, traçable et fondée sur des sources pertinentes.
+
+Cette exigence nous a poussés à penser davantage à la qualité du système qu’à la simple performance du modèle.
+
+### L’architecture doit servir le besoin
+
+L’architecture multi-agents n’était pas utilisée seulement pour suivre une tendance technique. Elle répondait à un besoin réel : séparer les responsabilités, organiser le raisonnement et rendre le système plus modulaire.
+
+Chaque agent devait apporter une valeur claire au fonctionnement global de WatiQ.
+
+### La communication est aussi importante que la technique
+
+Dans une compétition, il ne suffit pas d’avoir une bonne solution. Il faut aussi savoir l’expliquer clairement.
+
+Il faut être capable de présenter le problème, la solution, l’impact, les choix techniques et les limites du projet à des profils différents : techniques, business, communication ou impact social.
+
+### L’impact doit être pensé dès le début
+
+Un projet IA à impact ne doit pas seulement être impressionnant techniquement. Il doit répondre à un besoin réel, être compréhensible par ses utilisateurs et avoir une utilité concrète.
+
+WatiQ nous a permis de réfléchir à cette relation entre intelligence artificielle, accessibilité et impact social.
+
+---
+
+## 8. Les limites actuelles du projet
+
+WatiQ reste un prototype, et plusieurs améliorations seraient nécessaires pour le transformer en solution plus complète.
+
+Parmi les limites actuelles :
+
+- la base juridique doit être élargie ;
+- les réponses doivent être validées davantage par des experts du domaine ;
+- les citations juridiques peuvent être améliorées ;
+- l’expérience utilisateur peut être rendue plus intuitive ;
+- la couverture linguistique peut être enrichie ;
+- l’intégration avec des sources officielles peut être renforcée.
+
+Ces limites sont importantes à reconnaître, car elles montrent que construire une solution IA fiable nécessite un travail continu d’amélioration, de validation et d’itération.
+
+---
+
+## 9. Les perspectives d’évolution
+
+Pour aller plus loin, WatiQ pourrait évoluer vers une plateforme plus complète d’assistance juridique.
+
+Parmi les pistes possibles :
+
+- ajouter plus de domaines juridiques ;
+- intégrer une meilleure gestion des citations ;
+- proposer une expérience multilingue en arabe, français et darija ;
+- améliorer l’orientation vers les institutions compétentes ;
+- permettre une validation par des experts juridiques ;
+- proposer des parcours guidés selon le type de problème ;
+- connecter la plateforme à des ressources publiques officielles.
+
+L’objectif final serait de faire de WatiQ un outil capable d’aider les citoyens à mieux comprendre leurs droits et à mieux s’orienter dans leurs démarches.
+
+---
+
+## 10. Conclusion
+
+Participer à AI4Morocco: Agents Edition avec le projet WatiQ a été une expérience très enrichissante, autant sur le plan technique qu’humain.
+
+Ce projet m’a permis de mieux comprendre les défis liés à la conception d’une solution IA dans un domaine sensible comme le droit. Il m’a aussi appris qu’un projet à impact ne repose pas uniquement sur la technologie, mais sur la clarté du problème, la pertinence de la solution, la qualité de l’exécution et la capacité de l’équipe à avancer ensemble.
+
+WatiQ reste un prototype, mais cette expérience a renforcé mon intérêt pour les projets à l’intersection de l’intelligence artificielle, de la data, du cloud et de l’impact social.
+
+Plus qu’une compétition, AI4Morocco a été pour moi une vraie leçon sur la manière de construire des agents IA utiles, responsables et orientés vers des problèmes réels.
