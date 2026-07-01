@@ -7,7 +7,7 @@ const person = {
     return `${this.firstName} ${this.lastName}`;
   },
   role: "Web Developer",
-  avatar: "/images/photo_finale.jpg",
+  avatar: "/images/photo_d'identité_square.png",
   location: "Africa/Casablanca",
   languages: ["English", "French", "Arabic"],
   skills: {
@@ -309,7 +309,7 @@ const about = {
 
 const blog = {
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: "Sharing and writing about my pure experiences",
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route

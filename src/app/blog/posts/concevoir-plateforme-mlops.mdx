@@ -1,0 +1,172 @@
+---
+title: "Un projet qui m'a fait gagner des annees d'apprentissage"
+publishedAt: "2026-06-29"
+image: "/images/blogs_covers/SecuredMLOPS_cover.png"
+summary: "Le projet de Fin dAnnee"
+tag: "Experience"
+---
+
+# Concevoir un pipeline MLOps sécurisée : retour sur la réalisation de SecuredMLOps
+
+---
+
+> _Comment le projet de d’année m’a donné l’opportunité de découvrir la totalité du cycle de vie d’un système ML tout en sécurisant chaque étape avant meme sa mise en production_
+
+## Introduction
+
+---
+
+Une fois qu’on commence de parler à propos du Machine Learning, on commence souvent à penser que le cœur d’un projet réside dans le bon choix de l’algorithme, bon choix du dataset et amélioration des performances du modèle.
+
+En réalité, au sein des projets, on découvert rapidement que l’entrainement d’un modèle n’est que la premiere couche. Le vrai objectif qu’on doit atteindre est de transformer le modèle en un système fiable, automatisé, reproductible et sécurisé dans chaque étape avec la capacité de l’exploiter en production.
+
+Comment garantir que les données utilisées presiste dans le temps? Comment suivre les expériences et l’évolution des expériences réalisées ? Comment déployer les modèles Machine Learning sans introduire de vulnérabilités ? Comment surveiller son comportement une fois déployé ?
+
+En essayons de répondre à ces questions que SECUREDMLOPS est né, mon projet de fin d’année sous l’encadrement de notre professeur Omar Sefraoui
+
+L’objectif n’était pas de développer uniquement un modèle Machine Learning, le vrai but était de concevoir un pipeline qui automatise le cycle de vie de ce modèle, tout en intégrant la sécurité dès la conception vers la production en intégrant l’approche MLOps + DevSecOps.
+
+## Pourquoi ce projet ?
+
+---
+
+Aujourd'hui, de nombreuses démonstrations de Machine Learning s'arrêtent dès que le modèle atteint un bon score de précision.
+
+Dans un environnement professionnel, cette étape n'est pourtant qu'une petite partie du travail.
+
+Un système d'IA moderne doit également être capable de :
+
+- gérer les données de manière reproductible ;
+- suivre l'ensemble des expérimentations ;
+- automatiser son déploiement ;
+- intégrer la sécurité dès les premières étapes du développement ;
+- être surveillé en permanence afin de détecter les dérives ou les anomalies.
+
+C'est précisément cette vision globale que j'ai souhaité mettre en pratique au travers de ce projet.
+
+Aujourd’hui, de nombreuses de projets Machine Learning s’arrêtent une fois le modèle atteint des scores de précisions pertinents.
+
+Dans un environnement réel et professionnel, cette partie n’est qu’une seule partie d’un process complet.
+
+Un système ML moderne doit couvrir également:
+
+- la gestion des données de manière reproductible
+- suivie de l’ensemble des expérimentations
+- automatisation du déploiement
+- intégration de la sécurité dès la première étape
+- la surveillance en permanence afin de détecter les dérives ou les anomalies.
+
+C’est exactement ce que nous avons souhaité mettre en pratique au travers de ce projet.
+
+## Présentation de SecuredMLOps
+
+---
+
+SecuredMLOps est un pipeline de Machine Learning sécurisée dans chaque étape développée autour d'un cas d'usage concret et important: la détection d'intrusions réseau.
+
+À partir du jeu de données **CICIDS2017** qui avait été réalisé par **le Canadian Institute for Cybersecurity (CIC)**, qui fait partie de l'Université du Nouveau-Brunswick (UNB) au Canada, le pipeline est capable de traiter plusieurs millions de flux réseau afin de distinguer automatiquement un trafic **normal** d'un trafic **malveillant**.
+
+Mais le modèle de classification binaire n’est qu’une seule partie parmi d’autres
+
+Le projet couvre aussi :
+
+- la validation et le prétraitement des données
+- le versionnement des données
+- le suivi des expérimentations
+- l'explicabilité des prédictions
+- le développement d'une API d'inférence ;
+- la conteneurisation de l'application ;
+- l'automatisation du pipeline CI/CD ;
+- le déploiement sur Kubernetes ;
+- le monitoring et la détection des dérives en production.
+
+L’objectif donc était: construire un modèle de contrôle complet, automatisé et systématique.
+
+Vous trouverez toutes les details du projet dans ce [lien](https://devsecops-viz.lovable.app/)
+
+## Une architecture pensée pour la production
+
+---
+
+Le projet est réalisé en suivant une méthodologie composée de 6 étapes:
+
+- Data & Versionning
+- Preprocessing & feature engineering
+- ML & Tracking
+- CI/CD sécurisé
+- Déploiement Kubernetes
+- Monitoring & drift detection
+
+Chaque étape apporte sa propre couche d'automatisation, de contrôle qualité et de sécurité.
+
+Cette approche permet de garantir que chaque nouvelle version du projet puisse être reconstruite, testée, déployée et surveillée de manière reproductible.
+
+![Architecture du projet](/images/blogs_covers/Architecture.jpg)
+
+## Les technologies utilisées
+
+---
+
+Afin de repondre aux objectifs de chaque étape, plusieurs outils et technologies sont mettes en jeu.
+
+Pour le modèle Machine Learning :
+
+- Python
+- Scikit-learn
+- XGBoost
+- SHAP
+- SMOTE
+
+Pour la partie MLOps :
+
+- MLflow
+- DVC
+- DagsHub
+
+Concernant la securité du pipeline par l’approche DevSecOps:
+
+- Bandit
+- Trivy
+- GitLeaks
+- OWASP ZAP
+
+Pour le déploiement :
+
+- FastAPI
+- Docker
+- Kubernetes
+- ArgoCD
+
+Et finallement pour le monitoring on a utilisé:
+
+- Grafana
+- Prometheus
+- Evidently Ai
+
+La totalité de ces outils et technologies forme une chaîne cohérente et compléte permettant d'automatiser le cycle de vie complet du modèle.
+
+## Non pas un modele Machine Learning simple
+
+---
+
+Avant de comprendre profondément le projet, je croyais que la partie la plus importante etait la construction dun modele performant.
+
+Avec le recul, je me suis rendu compte que le véritable défi était ailleurs.
+
+Concevoir un système reproductible, sécuriser le pipeline, automatiser les déploiements, gérer les dépendances, surveiller les performances en production ou encore assurer la traçabilité des expériences représentent une part essentielle du travail d'un ingénieur MLOps.
+
+Ce projet m'a permis de découvrir que le Machine Learning n'est qu'une composante d'un écosystème beaucoup plus vaste.
+
+## La suite de cette série
+
+---
+
+Cet article constitue une introduction à une série consacrée aux différentes facettes du projet **SecuredMLOps**.
+
+Les prochains articles aborderont notamment :
+
+- pourquoi le MLOps seul ne suffit plus et comment le DevSecOps complète cette approche
+- les coulisses d'un projet d'ingénierie mené sur plusieurs mois
+- les principales leçons que je retiens de cette expérience.
+
+J'espère que cette série pourra être utile aux étudiants, aux ingénieurs et à toute personne souhaitant mieux comprendre les enjeux liés au déploiement de systèmes de Machine Learning en production.

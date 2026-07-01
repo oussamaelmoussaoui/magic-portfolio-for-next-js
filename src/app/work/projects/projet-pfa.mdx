@@ -1,0 +1,60 @@
+---
+title: "SecuredMLOps: Building a Security-First Machine Learning Pipeline"
+publishedAt: "2026-06-20"
+summary: "A real complet ML pipeline secured in every step from data preparation to the production."
+images:
+  - "/images/projects/project-05/SecuredMLOPS_cover.png"
+  - "/images/projects/project-05/Architecture.jpg"
+team:
+  - name: "EL MOUSSAOUI Oussama"
+    role: "Data science engineering student"
+    avatar: "/images/photo_d'identité_square.png"
+link: "https://devsecops-viz.lovable.app/"
+---
+
+## Overview
+
+Machine learning models are increasingly deployed in production environments where security is not optional — it is existential. Yet most MLOps pipelines treat security as an afterthought, bolted on at the end rather than embedded from the start.
+SecuredMLOps was built to challenge that assumption.
+The project is a fully integrated MLOps pipeline designed around a DevSecOps philosophy: security is not a final checkpoint, it is a first-class citizen at every stage of the pipeline — from the developer's first commit to runtime in production. The applicative use case is network intrusion detection, a domain where the cost of a missed threat or a compromised model is real and measurable.
+The stack combines XGBoost for classification, FastAPI for model serving, MLflow and DVC for experiment tracking and data versioning, and Kubernetes for orchestration — all wired together with a security toolchain that covers code, dependencies, container images, API exposure, infrastructure policies, and secrets management.
+
+## Key Features
+
+End-to-end security coverage across the pipeline
+Six security tools, each mapped to a specific pipeline stage rather than deployed generically:
+
+- Bandit at commit — static analysis of Python source code
+- GitLeaks at push — detection of exposed secrets and credentials in git history
+- Trivy at build — vulnerability scanning of container images
+- OWASP ZAP at staging deployment — dynamic API security testing
+- OPA Gatekeeper at Kubernetes admission — policy enforcement before any workload runs
+- HashiCorp Vault at runtime — dynamic secrets injection, no hardcoded credentials anywhere
+
+High-performance intrusion detection
+XGBoost trained on the CICIDS2017 benchmark dataset delivered:
+→ F1-score of 99.86%
+→ ROC-AUC of 1.0
+→ Inference latency under 3ms
+Production-grade Kubernetes deployment
+A canary rollout strategy with progressive traffic shifting (10% → 25% → 50% → 75% → 100%) and automatic rollback triggered if the success rate drops below 95% — ensuring zero-downtime deployments with built-in safety nets.
+Full ML lifecycle traceability
+Every experiment, dataset version, and model artifact is tracked and reproducible through MLflow and DVC, with remote storage on DagsHub. No black-box training runs.
+
+## Learnings & Challenges
+
+Security integration is an architectural decision, not a configuration task.
+The hardest part was not learning each tool individually — it was deciding where exactly in the pipeline each tool belonged, and why. Placing OWASP ZAP too early (before a staging environment exists) or OPA Gatekeeper too late (after workloads are admitted) breaks the whole security model. Each tool has a precise injection point, and getting that mapping right required understanding the threat model of each pipeline stage, not just the tool's documentation.
+Data engineering at scale requires discipline before modeling.
+CICIDS2017 weighs in at over 800MB. Loading it naively on a RAM-constrained machine causes silent failures and corrupted pipelines. Chunked ingestion and float32 conversion were necessary before any modeling work could begin. More critically, SMOTE for class balancing had to be applied strictly after the train/test split — applying it before constitutes data leakage and invalidates every metric that follows.
+MLOps tooling has sharp edges at newer versions.
+Two breaking changes cost significant debugging time: XGBoost 2.0 moved early_stopping_rounds from the fit() call to the constructor, and MLflow 3.x requires a SQL-based backend (SQLite or similar) for the experiment Overview tab to surface run data — a file-based backend silently produces an empty UI with no error.
+Team coordination is a technical problem too.
+Managing parallel workstreams across a multi-person team on a project spanning security, ML, and infrastructure required as much engineering discipline in communication and integration as in the code itself. Merge conflicts in pipeline configuration files are more costly than merge conflicts in feature code.
+
+## Outcome
+
+SecuredMLOps demonstrates that security and performance are not in tension — they are complementary when designed together from the start.
+The final pipeline achieves near-perfect classification performance (F1 99.86%, ROC-AUC 1.0) while maintaining inference latency under 3ms, fully deployable on Kubernetes with automated security gates at every stage. Every component is reproducible, every secret is managed dynamically, and every deployment is reversible.
+Beyond the metrics, the project produced something harder to quantify: a working mental model of what it means to engineer ML systems that are production-ready not just in accuracy, but in trust.
+The full source code is available at github.com/oelmoussawi/SecuredMLOps.

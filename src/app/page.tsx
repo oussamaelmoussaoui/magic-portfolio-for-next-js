@@ -13,6 +13,7 @@ import { Posts } from "@/components/blog/Posts";
 import { CarouselCards } from "@/components/CarouselCards";
 import { Orbits } from "@/components/Orbits";
 import { AnimatedListDemo } from "@/components/AnimatedListDemo";
+import { Globe } from "@/components/ui/globe";
 
 export async function generateMetadata() {
   const title = `${person.name} — Web Developer & Data Science Engineer`;
@@ -71,56 +72,66 @@ export default function Home() {
         }}
       />
 
-      <Column fillWidth paddingY="l" gap="m" height={40}>
-        <Column maxWidth="xl" fillWidth fillHeight vertical="center">
-          <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="m">
-            <Heading wrap="balance" align="center" className="text-6xl font-semibold">
-              {home_page.hero_sec.sec_title}
-            </Heading>
-          </RevealFx>
+      <Column paddingY="l" gap="m" height={40} className="rounded-xl w-[90vw] px-10 bg-white">
+        <Flex
+          fillWidth
+          fillHeight
+          vertical="center"
+          horizontal="space-between"
+          mobileDirection="column"
+        >
+          <Column maxWidth="xl" fillWidth fillHeight vertical="center" horizontal="start">
+            <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
+              <Heading wrap="balance" align="center" className="text-6xl font-semibold">
+                {home_page.hero_sec.sec_title}
+              </Heading>
+            </RevealFx>
 
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="m">
-            <Text
-              wrap="balance"
-              align="center"
-              onBackground="neutral-medium"
-              variant="body-default-xl"
-            >
-              {home_page.hero_sec.sec_description}
-            </Text>
-          </RevealFx>
-
-          <RevealFx translateY="12" delay={0.4} horizontal="center">
-            <Flex gap="12" vertical="center">
-              <Button id="about" data-border="rounded" href="/about" variant="primary" size="m">
-                <Flex gap="8" vertical="center">
-                  {about.avatar.display && (
-                    <Avatar
-                      style={{ marginLeft: "-0.75rem", marginRight: "0.25rem" }}
-                      src={person.avatar}
-                      size="m"
-                    />
-                  )}
-                  {about.title}
-                </Flex>
-              </Button>
-
-              <Button
-                id="resume-download"
-                data-border="rounded"
-                href="/resume.pdf"
-                variant="secondary"
-                size="m"
-                target="_blank"
-                rel="noopener noreferrer"
+            <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="m">
+              <Text
+                wrap="balance"
+                align="center"
+                onBackground="neutral-medium"
+                variant="body-default-xl"
               >
-                <Flex gap="8" vertical="center">
-                  Download resume
-                </Flex>
-              </Button>
-            </Flex>
-          </RevealFx>
-        </Column>
+                {home_page.hero_sec.sec_description}
+              </Text>
+            </RevealFx>
+
+            <RevealFx translateY="12" delay={0.4} horizontal="start">
+              <Flex gap="12" vertical="center">
+                <Button id="about" data-border="rounded" href="/about" variant="primary" size="m">
+                  <Flex gap="8" vertical="center">
+                    {about.avatar.display && (
+                      <Avatar
+                        style={{ marginLeft: "-0.75rem", marginRight: "0.25rem" }}
+                        src={person.avatar}
+                        size="m"
+                      />
+                    )}
+                    {about.title}
+                  </Flex>
+                </Button>
+
+                <Button
+                  id="resume-download"
+                  data-border="rounded"
+                  href="/resume.pdf"
+                  variant="secondary"
+                  size="m"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Flex gap="8" vertical="center">
+                    Download resume
+                  </Flex>
+                </Button>
+              </Flex>
+            </RevealFx>
+          </Column>
+
+          <Globe />
+        </Flex>
       </Column>
 
       <CarouselCards />
@@ -155,18 +166,11 @@ export default function Home() {
         </Column>
       </RevealFx>
 
-      <Column fillWidth paddingY="xl" gap="m" fillHeight>
-        <Flex
-          maxWidth="xl"
-          fillWidth
-          fillHeight
-          vertical="center"
-          gap="32"
-          mobileDirection="column"
-        >
+      <Column fillWidth paddingY="m" gap="m">
+        <Flex maxWidth="xl" fillWidth vertical="center" gap="32" mobileDirection="column">
           <RevealFx translateY="4" horizontal="center">
             <Image
-              src="/images/mwa.jpg"
+              src="/images/photo_d'identité.png"
               alt="About me image"
               width={500}
               height={700}

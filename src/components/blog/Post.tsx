@@ -22,7 +22,7 @@ export default function Post({ post, thumbnail }: PostProps) {
     >
       <Flex
         position="relative"
-        mobileDirection="column"
+        direction="column"
         fillWidth
         paddingY="12"
         paddingX="16"
@@ -32,7 +32,7 @@ export default function Post({ post, thumbnail }: PostProps) {
         {post.metadata.image && thumbnail && (
           <SmartImage
             priority
-            maxWidth={20}
+            fillWidth
             className={styles.image}
             sizes="640px"
             border="neutral-alpha-weak"
@@ -40,23 +40,23 @@ export default function Post({ post, thumbnail }: PostProps) {
             radius="s"
             src={post.metadata.image}
             alt={"Thumbnail of " + post.metadata.title}
-            aspectRatio="16 / 9"
+            aspectRatio="4 / 3"
           />
         )}
 
-        <Column position="relative" fillWidth gap="8" vertical="center" className="">
-          <Heading as="h2" variant="heading-strong-l" wrap="balance">
+        <Column position="relative" fillWidth gap="8" vertical="start" className="">
+          <Heading as="h2" variant="heading-strong-l" wrap="balance" align="start">
             {post.metadata.title}
           </Heading>
 
-          <Text variant="label-default-s" onBackground="neutral-weak">
+          <Text variant="body-strong-s" onBackground="neutral-weak" align="start">
             {post.metadata.publishedAt && formatDate(post.metadata.publishedAt, false)}
           </Text>
 
           {tags.length > 0 && (
             <Flex gap="8">
               {tags.map((tag: string, index: number) =>
-                index < 3 ? <Tag key={index} label={tag} variant="neutral" /> : null
+                index < 3 ? <Tag key={index} label={tag} variant="success" /> : null
               )}
             </Flex>
           )}
