@@ -47,8 +47,17 @@ export const Header = () => {
 
   return (
     <>
-      <Fade hide="s" fillWidth position="fixed" height="80" zIndex={9} />
-      <Fade show="s" fillWidth position="fixed" bottom="0" to="top" height="80" zIndex={9} />
+      <Fade hide="s" fillWidth position="fixed" height="80" zIndex={9} pointerEvents="none" />
+      <Fade
+        show="s"
+        fillWidth
+        position="fixed"
+        bottom="0"
+        to="top"
+        height="80"
+        zIndex={9}
+        pointerEvents="none"
+      />
       <Flex
         fitHeight
         className={styles.position}
@@ -62,14 +71,7 @@ export const Header = () => {
           {display.location && <Flex hide="s">{person.location}</Flex>}
         </Flex>
         <Flex fillWidth horizontal="center">
-          <Flex
-            background="surface"
-            border="neutral-medium"
-            radius="m-4"
-            shadow="l"
-            padding="4"
-            horizontal="center"
-          >
+          <Flex radius="m-4" shadow="l" padding="4" horizontal="center">
             <Flex gap="4" vertical="center" textVariant="body-default-s">
               {routes["/"] && (
                 <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
@@ -143,7 +145,7 @@ export const Header = () => {
                     selected={pathname.startsWith("/gallery")}
                   />
                 </>
-              )} 
+              )}
             </Flex>
           </Flex>
         </Flex>

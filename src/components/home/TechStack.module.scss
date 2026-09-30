@@ -1,0 +1,16 @@
+.socialLink {
+  .arrow {
+    transition: transform var(--transition-micro-medium);
+  }
+
+  &:hover {
+    color: var(--brand-on-solid-strong);
+    border-color: var(--brand-alpha-medium);
+    background: var(--neutral-alpha-weak);
+
+    .arrow {
+      opacity: 1;
+      transform: translate(2px, -2px);
+    }
+  }
+}

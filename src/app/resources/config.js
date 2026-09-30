@@ -17,24 +17,24 @@ const protectedRoutes = {
 const style = {
   theme: "light", // dark | light
   neutral: "gray", // sand | gray | slate
-  brand: 'blue', // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | red | aqua | cyan
+  brand: "blue", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | red | aqua | cyan
   accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | red | aqua | cyan
   solid: "color", // color | contrast
   solidStyle: "flat", // flat | plastic
-  border: "rounded", // rounded | playful | conservative
-  surface: "translucent", // filled | translucent
+  border: "conservative", // rounded | playful | conservative
+  surface: "filled", // filled | translucent
   transition: "all", // all | micro | macro
 };
 
 const effects = {
   mask: {
-    cursor: true,
+    cursor: false,
     x: 0,
     y: 0,
     radius: 75,
   },
   gradient: {
-    display: true,
+    display: false,
     x: 50,
     y: 0,
     width: 100,
@@ -45,7 +45,7 @@ const effects = {
     opacity: 50,
   },
   dots: {
-    display: true,
+    display: false,
     size: 4,
     color: "brand-on-background-weak",
     opacity: 10,

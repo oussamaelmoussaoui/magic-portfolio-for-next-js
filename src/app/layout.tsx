@@ -155,7 +155,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               opacity: effects.lines.opacity as any,
             }}
           />
-          <Flex fillWidth minHeight="16"></Flex>
+          {/*           <Flex fillWidth minHeight="16"></Flex> */}
           <Header />
           <Flex
             position="relative"
@@ -165,6 +165,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             paddingX="l"
             horizontal="center"
             flex={1}
+            className="z-2"
+            background="surface"
           >
             <Flex horizontal="center" fillWidth minHeight="0">
               <RouteGuard>{children}</RouteGuard>

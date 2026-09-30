@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
+import { BlogCategory, normalizeCategory } from "./blogTypes";
+
 type Team = {
   name: string;
   role: string;
@@ -16,11 +18,12 @@ type Metadata = {
   image?: string;
   images: string[];
   tag?: string;
+  category: BlogCategory;
   team: Team[];
   link?: string;
 };
 
-import { notFound } from 'next/navigation';
+import { notFound } from "next/navigation";
 
 function getMDXFiles(dir: string) {
   if (!fs.existsSync(dir)) {
@@ -31,20 +34,21 @@ function getMDXFiles(dir: string) {
 }
 
 function readMDXFile(filePath: string) {
-    if (!fs.existsSync(filePath)) {
-        notFound();
-    }
+  if (!fs.existsSync(filePath)) {
+    notFound();
+  }
 
   const rawContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(rawContent);
 
   const metadata: Metadata = {
     title: data.title || "",
-    publishedAt: data.publishedAt,
+    publishedAt: data.publishedAt || "",
     summary: data.summary || "",
     image: data.image || "",
-    images: data.images || [],
-    tag: data.tag || [],
+    images: data.images || (data.image ? [data.image] : []),
+    tag: data.tag || "",
+    category: normalizeCategory(data.category),
     team: data.team || [],
     link: data.link || "",
   };
@@ -62,6 +66,7 @@ function getMDXData(dir: string) {
       metadata,
       slug,
       content,
+      source: "mdx" as const,
     };
   });
 }

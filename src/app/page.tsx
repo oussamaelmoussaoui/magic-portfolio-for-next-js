@@ -1,19 +1,50 @@
 import React from "react";
 
 import Image from "next/image";
+import styles from "@/app/page.module.scss";
 
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Arrow, Column } from "@/once-ui/components";
+import {
+  Heading,
+  Flex,
+  Text,
+  Button,
+  Avatar,
+  RevealFx,
+  Arrow,
+  Column,
+  Row,
+} from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
+import { IconButton } from "@/once-ui/components";
 
 import { baseURL, routes } from "@/app/resources";
-import { home, about, person, newsletter, work_sec, about_sec } from "@/app/resources/content";
+import {
+  home,
+  about,
+  person,
+  newsletter,
+  work_sec,
+  about_sec,
+  social,
+} from "@/app/resources/content";
 import { home_page, about_page, work_page } from "@/app/resources/section_content";
+import { Icons } from "@/components/ui/icons"; // ton fichier collé
 
 import { Posts } from "@/components/blog/Posts";
 import { CarouselCards } from "@/components/CarouselCards";
 import { Orbits } from "@/components/Orbits";
 import { AnimatedListDemo } from "@/components/AnimatedListDemo";
 import { Globe } from "@/components/ui/globe";
+import { LogoSlider } from "@/components/LogoSlider";
+import { ExperienceCarousel } from "@/components/ExpCarousel";
+import { Container } from "lucide-react";
+import { StickyScrollReveal } from "@/components/StickyScrollReveal";
+import { buildStickyItemsFromIcons } from "@/components/StickyScrollHelpers";
+import Hero from "@/components/home/Hero";
+import BeyondCode from "@/components/home/BeyondCode";
+import { KeyStats } from "@/components/home/KeyStats";
+import { TechStackGrid } from "@/components/home/TechStackGrid";
+import { SectionTitleBar } from "@/components/SectionTitleBar";
 
 export async function generateMetadata() {
   const title = `${person.name} — Web Developer & Data Science Engineer`;
@@ -44,9 +75,11 @@ export async function generateMetadata() {
   };
 }
 
+const items = buildStickyItemsFromIcons(Icons);
+
 export default function Home() {
   return (
-    <Column maxWidth="l" gap="xl" horizontal="center">
+    <Column maxWidth="xl" className={styles.mainCont} horizontal="center">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -72,206 +105,62 @@ export default function Home() {
         }}
       />
 
-      <Column paddingY="l" gap="m" height={40} className="rounded-xl w-[90vw] px-10 bg-white">
-        <Flex
-          fillWidth
-          fillHeight
-          vertical="center"
-          horizontal="space-between"
-          mobileDirection="column"
-        >
-          <Column maxWidth="xl" fillWidth fillHeight vertical="center" horizontal="start">
-            <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
-              <Heading wrap="balance" align="center" className="text-6xl font-semibold">
-                {home_page.hero_sec.sec_title}
-              </Heading>
-            </RevealFx>
+      <Hero />
 
-            <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="m">
-              <Text
-                wrap="balance"
-                align="center"
-                onBackground="neutral-medium"
-                variant="body-default-xl"
-              >
-                {home_page.hero_sec.sec_description}
-              </Text>
-            </RevealFx>
-
-            <RevealFx translateY="12" delay={0.4} horizontal="start">
-              <Flex gap="12" vertical="center">
-                <Button id="about" data-border="rounded" href="/about" variant="primary" size="m">
-                  <Flex gap="8" vertical="center">
-                    {about.avatar.display && (
-                      <Avatar
-                        style={{ marginLeft: "-0.75rem", marginRight: "0.25rem" }}
-                        src={person.avatar}
-                        size="m"
-                      />
-                    )}
-                    {about.title}
-                  </Flex>
-                </Button>
-
-                <Button
-                  id="resume-download"
-                  data-border="rounded"
-                  href="/resume.pdf"
-                  variant="secondary"
-                  size="m"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Flex gap="8" vertical="center">
-                    Download resume
-                  </Flex>
-                </Button>
-              </Flex>
-            </RevealFx>
-          </Column>
-
-          <Globe />
-        </Flex>
+      <Column fillWidth>
+        <LogoSlider />
       </Column>
 
-      <CarouselCards />
+      {/* Section Chiffres clés animée */}
+      <KeyStats />
 
-      <RevealFx translateY="16" delay={0.6}>
-        <Column fitWidth vertical="center" padding="m" radius="l" marginX="s">
-          <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="m">
-            <Heading wrap="balance" align="center" className="text-6xl font-semibold">
-              {home_page.work_sec.sec_title}
-            </Heading>
-          </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="m">
-            <Text
-              wrap="balance"
-              align="center"
-              onBackground="neutral-medium"
-              variant="body-default-xl"
-            >
-              {home_page.work_sec.sec_description}
-            </Text>
-          </RevealFx>
-          <Projects range={[1, 1]} />
-          <RevealFx translateY="12" delay={0.4} horizontal="center">
-            <Flex gap="12" vertical="center">
-              <Button id="about" data-border="rounded" href="/work" variant="primary" size="m">
-                <Flex gap="8" vertical="center">
-                  {home_page.work_sec.cta}
-                </Flex>
-              </Button>
-            </Flex>
-          </RevealFx>
-        </Column>
-      </RevealFx>
-
-      <Column fillWidth paddingY="m" gap="m">
-        <Flex maxWidth="xl" fillWidth vertical="center" gap="32" mobileDirection="column">
-          <RevealFx translateY="4" horizontal="center">
-            <Image
-              src="/images/photo_d'identité.png"
-              alt="About me image"
-              width={500}
-              height={700}
-              className="rounded-lg shadow-lg"
-            />
-          </RevealFx>
-          <RevealFx
-            translateY="8"
-            delay={0.2}
-            fillWidth
-            fillHeight
-            vertical="center"
-            horizontal="start"
-          >
-            <Flex gap="16" direction="column">
-              <Heading wrap="balance" align="start" className="text-6xl font-semibold text-blue ">
-                {home_page.about_sec.sec_title}
-              </Heading>
-              <Text
-                wrap="balance"
-                align="start"
-                onBackground="neutral-medium"
-                variant="body-default-xl"
-              >
-                {home_page.about_sec.sec_description}
-              </Text>
-            </Flex>
-          </RevealFx>
-        </Flex>
+      {/* Section Services Bento */}
+      <Column fillWidth gap="m" vertical="center">
+        <SectionTitleBar title="Services & Domaines" cta="Tous les projets" href="/work" />
+        <CarouselCards />
       </Column>
 
-      <Flex
-        align="center"
-        vertical="center"
-        horizontal="space-between"
-        fillWidth
-        mobileDirection="column"
-      >
-        <Flex flex={1} gap="16" direction="column">
-          <Heading wrap="balance" align="start" className="text-6xl font-semibold">
-            {home_page.skills_sec.sec_title}
-          </Heading>
-          <Text
-            wrap="balance"
-            align="start"
-            onBackground="neutral-medium"
-            variant="body-default-xl"
-          >
-            {home_page.skills_sec.sec_description}
-          </Text>
-          <Button
-            id="skills"
-            data-border="rounded"
-            href="/about#Technical Skills"
-            variant="primary"
-            size="m"
-          >
-            {home_page.skills_sec.cta}
-          </Button>
-        </Flex>
+      {/* Section Technologies & Stack Grid */}
+      <Column fillWidth gap="m" vertical="center" paddingY="l">
+        <SectionTitleBar title="Technologies & Outils" cta="En savoir plus" href="/about" />
+        <TechStackGrid />
+      </Column>
 
-        <Flex flex={1} gap="16" direction="column" className="relative">
-          <Orbits />
-        </Flex>
-      </Flex>
+      {/* Projets & Expériences récentes */}
+      <ExperienceCarousel
+        title="Expériences & Réalisations"
+        description="Un aperçu de mes projets récents en développement, machine learning et IA."
+        items={[
+          {
+            id: "alienture",
+            title: "Alienture",
+            description:
+              "Startup marocaine d'IA pour déployer et sécuriser des solutions IA en local.",
+            href: "/work/watiq-agent",
+            image: "/images/blogs_covers/Architecture.jpg",
+          },
+          {
+            id: "Watiq",
+            title: "Watiq - Agent Juridique IA",
+            description:
+              "Système multi-agents pour des consultations et recherches juridiques marocaines.",
+            href: "/work/watiq-agent",
+            image: "/images/gallery/ai4m.png",
+          },
+          {
+            id: "SecuredMLOps",
+            title: "SecuredMLOps Platform",
+            description:
+              "Plateforme MLOps complète avec suivi des expériences, registry de modèles et sécurité.",
+            href: "/blog/concevoir-plateforme-mlops",
+            image: "/images/blogs_covers/SecuredMLOPS_cover.png",
+          },
+        ]}
+      />
 
-      <Flex
-        align="center"
-        vertical="center"
-        horizontal="space-between"
-        fillWidth
-        mobileDirection="column"
-        gap="32"
-      >
-        <Flex flex={1}>
-          <AnimatedListDemo />
-        </Flex>
-        <Flex flex={1} gap="16" direction="column">
-          <Heading wrap="balance" align="start" className="text-6xl font-semibold">
-            {home_page.activities_sec.sec_title}
-          </Heading>
-          <Text
-            wrap="balance"
-            align="start"
-            onBackground="neutral-medium"
-            variant="body-default-xl"
-          >
-            {home_page.activities_sec.sec_description}
-          </Text>
-          <Button
-            id="skills"
-            data-border="rounded"
-            href="/about#Beyond the Classroom"
-            variant="primary"
-            size="m"
-          >
-            {home_page.activities_sec.cta}
-          </Button>
-        </Flex>
-      </Flex>
+      <BeyondCode />
 
+      {/* Section Derniers Articles */}
       <Column fillWidth paddingY="xl" gap="l" align="center" horizontal="center">
         {routes["/blog"] && (
           <Flex
@@ -283,17 +172,27 @@ export default function Home() {
           >
             <Flex flex={2} direction="column">
               <RevealFx translateY="4" horizontal="start">
-                <Heading wrap="balance" align="start" className="text-6xl font-semibold">
+                <Heading
+                  wrap="balance"
+                  align="start"
+                  variant="display-strong-m"
+                  className="font-bold"
+                >
                   {home_page.blog_sec.sec_title}
                 </Heading>
               </RevealFx>
               <RevealFx translateY="4" horizontal="start">
-                <Text wrap="balance" align="start" variant="body-default-xl">
+                <Text
+                  wrap="balance"
+                  align="start"
+                  variant="body-default-l"
+                  onBackground="neutral-weak"
+                >
                   {home_page.blog_sec.sec_description}
                 </Text>
               </RevealFx>
             </Flex>
-            <Flex flex={3} paddingX="20">
+            <Flex flex={3} paddingX="20" fillWidth>
               <RevealFx translateY="4" horizontal="start">
                 <Posts range={[1, 2]} columns="2" />
               </RevealFx>
@@ -301,9 +200,6 @@ export default function Home() {
           </Flex>
         )}
       </Column>
-
-      {/* <Projects range={[1, 2]} /> */}
-      {/*       {newsletter.display && <Mailchimp newsletter={newsletter} />} */}
     </Column>
   );
 }

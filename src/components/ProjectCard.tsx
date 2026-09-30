@@ -1,14 +1,17 @@
-"use client";
-
 import {
   AvatarGroup,
   Carousel,
   Column,
   Flex,
   Heading,
+  Icon,
+  Row,
   SmartLink,
+  Tag,
   Text,
 } from "@/once-ui/components";
+
+import styles from "./ProjectCard.module.scss";
 
 interface ProjectCardProps {
   href: string;
@@ -17,8 +20,9 @@ interface ProjectCardProps {
   title: string;
   content: string;
   description: string;
-  avatars: { src: string }[];
-  link: string;
+  avatars?: { src: string }[];
+  link?: string;
+  tag?: string | string[];
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -27,73 +31,93 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   content,
   description,
-  avatars,
-  link,
+  avatars = [],
+  link = "",
+  tag,
 }) => {
+  const tagsList = Array.isArray(tag)
+    ? tag
+    : typeof tag === "string" && tag.trim()
+      ? tag.split(",").map((t) => t.trim())
+      : [];
+
   return (
-    <Column fillWidth gap="m">
-      
+    <Row fillWidth gap="s" position="relative" className={styles.control}>
       <Carousel
         sizes="(max-width: 1200px) 100vw, 1200px"
         images={images.map((image) => ({
           src: image,
           alt: title,
         }))}
+        flex={8}
       />
       <Flex
-        mobileDirection="column"
+        direction="column"
         fillWidth
-        paddingX="s"
-        paddingTop="12"
-        paddingBottom="24"
-        gap="l"
+        padding="m"
+        gap="s"
+        vertical="space-between"
+        flex={2}
+        position="relative"
+        className={styles.content}
       >
-        {title && (
-          <Flex flex={5}>
-            <Heading as="h2" wrap="balance" variant="heading-strong-xl">
+        <Column gap="8" fillWidth>
+          {tagsList.length > 0 && (
+            <Flex gap="4" wrap marginBottom="4">
+              {tagsList.map((t, i) => (
+                <Tag key={i} size="s" variant="brand">
+                  {t}
+                </Tag>
+              ))}
+            </Flex>
+          )}
+
+          {title && (
+            <Heading as="h3" wrap="balance" variant="heading-strong-l">
               {title}
             </Heading>
-          </Flex>
-        )}
+          )}
 
-        {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
+          {description?.trim() && (
+            <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
+              {description}
+            </Text>
+          )}
+        </Column>
 
-          <Column flex={7} gap="16">
+        <Flex gap="2" wrap vertical="center" horizontal="start" paddingTop="s">
+          {content?.trim() && (
+            <SmartLink
+              style={{ margin: "0", width: "fit-content", textDecoration: "none" }}
+              href={href}
+            >
+              <Flex gap="8" vertical="start">
+                <Text variant="body-strong-s">Read case study</Text>
+                <span className={styles.arrowIcon}>
+                  <Icon name="arrowRight" size="xs" />
+                </span>
+              </Flex>
+            </SmartLink>
+          )}
 
-           {/*  {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />} */}
-
-            {description?.trim() && (
-              <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak" >
-                {description}
-              </Text>
-            )}
-
-            <Flex gap="24" wrap>
-              {content?.trim() && (
-                <SmartLink
-                  suffixIcon="arrowRight"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={href}
-                >
-                  <Text variant="body-default-s">Read case study</Text>
-                </SmartLink>
-              )}
-
-              {link && (
-                <SmartLink
-                  suffixIcon="arrowUpRightFromSquare"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={link}
-                >
-                  <Text variant="body-default-s">View project</Text>
-                </SmartLink>
-              )}
-            </Flex>
-
-          </Column>
-
-        )}
+          {link && (
+            <SmartLink
+              style={{ margin: "0", width: "fit-content", textDecoration: "none" }}
+              href={link}
+              target="_blank"
+            >
+              <Flex gap="8" vertical="start">
+                <Text variant="body-default-s" onBackground="neutral-weak">
+                  Live Preview
+                </Text>
+                <span className={styles.arrowIcon}>
+                  <Icon name="arrowUpRightFromSquare" size="xs" />
+                </span>
+              </Flex>
+            </SmartLink>
+          )}
+        </Flex>
       </Flex>
-    </Column>
+    </Row>
   );
 };

@@ -17,6 +17,7 @@ import { person, about, social } from "@/app/resources/content";
 import { about_page } from "@/app/resources/section_content";
 import { StackGrid } from "@/components/StackGrid";
 import Link from "next/link";
+import * as React from "react";
 
 export async function generateMetadata() {
   const title = about_page.title;
@@ -118,85 +119,26 @@ export default function About() {
         {about_page.avatar.display && (
           <Column
             className={styles.avatar}
-            paddingX="m"
             marginBottom="xl"
             paddingBottom="20"
             gap="m"
             flex={3}
             horizontal="center"
             zIndex={0}
-            maxWidth={60}
+            maxWidth="xl"
           >
-            <Flex gap="16" direction="row">
-              <Column gap="s" horizontal="center" flex={1}>
+            <Flex gap="16" direction="row" mobileDirection="column" horizontal="center" fillWidth>
+              <Column gap="s" horizontal="start" vertical="space-between" flex={1}>
                 <Avatar src={person.avatar} size="xl" />
-                {/* <Flex gap="8" vertical="center">
-                  <Icon onBackground="accent-weak" name="globe" />
-                  {person.location}
-                </Flex> */}
-
-                {/* <Flex direction="column" gap="16">
-                  {Object.entries(person.skills).map(([category, items], index) => ( */}
-                {/* <div key={index}>
-                      <Text variant="heading-default-s" onBackground="neutral-weak">
-                        {category.toUpperCase()}
-                      </Text>
-                      <Flex wrap gap="8" style={{ marginTop: 4 }}>
-                        {items.map((skill, i) => (
-                          <Tag key={i} size="l">
-                            {skill}
-                          </Tag>
-                        ))}
-                      </Flex>
-                    </div> */}
-                {/* ))}
-                  
-                </Flex> */}
-
-                {person.languages.length > 0 && (
-                  <Flex wrap gap="4">
-                    {person.languages.map((language, index) => (
-                      <Tag key={index} size="l">
-                        {language}
-                      </Tag>
-                    ))}
-                  </Flex>
-                )}
               </Column>
 
               <Column
                 id={about_page.intro.title}
                 fillWidth
-                minHeight="160"
-                vertical="start"
+                vertical="space-between"
                 flex={2}
+                className={styles.blockAlign}
               >
-                {/* {about_page.calendar.display && (
-                  <Flex
-                    fitWidth
-                    border="brand-alpha-medium"
-                    className={styles.blockAlign}
-                    style={{
-                      backdropFilter: "blur(var(--static-space-1))",
-                    }}
-                    background="brand-alpha-weak"
-                    radius="full"
-                    padding="4"
-                    gap="8"
-                    marginBottom="m"
-                    vertical="center"
-                  >
-                    <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                    <Flex paddingX="8">Schedule a call</Flex>
-                    <IconButton
-                      href={about_page.calendar.link}
-                      data-border="rounded"
-                      variant="secondary"
-                      icon="chevronRight"
-                    />
-                  </Flex>
-                )} */}
-
                 <Heading className={styles.textAlign} variant="display-strong-l">
                   {person.name}
                 </Heading>
@@ -212,7 +154,6 @@ export default function About() {
                   <Flex
                     className={styles.blockAlign}
                     paddingTop="20"
-                    paddingBottom="8"
                     gap="8"
                     wrap
                     horizontal="center"
@@ -221,10 +162,9 @@ export default function About() {
                     {social.map(
                       (item) =>
                         item.link && (
-                          <>
+                          <React.Fragment key={item.name}>
                             <Button
                               className="s-flex-hide"
-                              key={item.name}
                               href={item.link}
                               prefixIcon={item.icon}
                               label={item.name}
@@ -234,12 +174,11 @@ export default function About() {
                             <IconButton
                               className="s-flex-show"
                               size="l"
-                              key={`${item.name}-icon`}
                               href={item.link}
                               icon={item.icon}
                               variant="secondary"
                             />
-                          </>
+                          </React.Fragment>
                         )
                     )}
                   </Flex>
@@ -249,7 +188,7 @@ export default function About() {
           </Column>
         )}
 
-        <Column className={styles.blockAlign} flex={9} fillWidth maxWidth={50}>
+        <Column className={styles.blockAlign} flex={9} fillWidth maxWidth="xl">
           {about_page.intro.display && (
             <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
               {about_page.intro.description}
@@ -306,15 +245,17 @@ export default function About() {
                       {experience.role}
                     </Text>
                     <Column as="ul" gap="16">
-                      {experience.achievements.map((achievement: JSX.Element, index: number) => (
-                        <Text
-                          as="li"
-                          variant="body-default-m"
-                          key={`${experience.company}-${index}`}
-                        >
-                          {achievement}
-                        </Text>
-                      ))}
+                      {experience.achievements.map(
+                        (achievement: React.JSX.Element, index: number) => (
+                          <Text
+                            as="li"
+                            variant="body-default-m"
+                            key={`${experience.company}-${index}`}
+                          >
+                            {achievement}
+                          </Text>
+                        )
+                      )}
                     </Column>
                     {experience.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
@@ -359,40 +300,6 @@ export default function About() {
                 {about_page.technical.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
-                {/* {about_page.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
-                    <Text variant="heading-strong-l">{skill.title}</Text>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
-                      {skill.description}
-                    </Text>
-                    {skill.images && skill.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
-                          >
-                            <SmartImage
-                              enlarge
-                              radius="m"
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
-                          </Flex>
-                        ))}
-                      </Flex>
-                    )}
-                  </Column>
-                ))} */}
                 <StackGrid />
               </Column>
             </>
@@ -406,8 +313,8 @@ export default function About() {
                   variant="heading-strong-l"
                   className={
                     career.link
-                      ? "text-black group-hover:text-blue-600 duration-300 ease-in-out no-underline"
-                      : "text-black no-underline"
+                      ? "text-[var(--neutral-on-background-strong)] group-hover:text-blue-600 duration-300 ease-in-out no-underline"
+                      : "text-[var(--neutral-on-background-strong)] no-underline"
                   }
                 >
                   {career.role}
@@ -432,7 +339,13 @@ export default function About() {
             return (
               <Flex direction="row" key={`${career.role}-${index}`} fillWidth gap="8">
                 {career.link ? (
-                  <Link href={career.link} className="group no-underline">
+                  <Link
+                    href={career.link}
+                    className="group py-8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: "none" }}
+                  >
                     {content}
                   </Link>
                 ) : (

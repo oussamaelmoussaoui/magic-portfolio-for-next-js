@@ -1,27 +1,39 @@
 .hover {
-    transition: var(--transition-micro-medium);
+  transition: var(--transition-micro-medium);
 
-    &:hover {
-        transform: translateX(var(--static-space-4));
-    }
+  &:hover {
+    transform: translateX(var(--static-space-4));
+  }
 }
 
 .avatar {
-    position: relative;
-    height: fit-content;
-    top: var(--static-space-64);
+  position: relative;
+  height: fit-content;
+  top: var(--static-space-64);
+}
+
+@media (--m) {
+  .avatar {
+    top: auto;
+    margin-bottom: var(--static-space-32);
+  }
 }
 
 @media (--s) {
-    .avatar {
-        top: auto;
-    }
+  .avatar {
+    top: auto;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: var(--static-space-24);
+  }
 
-    .textAlign {
-        text-align: center;
-    }
+  .textAlign {
+    text-align: center;
+  }
 
-    .blockAlign {
-        align-self: center;
-    }
+  .blockAlign {
+    align-self: center;
+    text-align: center;
+  }
 }

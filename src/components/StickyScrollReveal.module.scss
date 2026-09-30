@@ -1,0 +1,233 @@
+.container {
+  width: 100%;
+  position: inherit;
+}
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+// -------- colonne fixe (gauche) --------
+.sticky {
+  flex: 0 0 38%;
+  align-self: flex-start;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex: 3;
+
+  @media (max-width: 768px) {
+    display: none; // sur mobile on affiche le titre inline (voir .mobileTitle)
+  }
+}
+
+.stickyInner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  padding: var(--static-space-8);
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(1.03);
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s ease;
+}
+
+.imageActive {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.stickyTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.progress {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.progressDot {
+  height: 3px;
+  flex: 1;
+  border-radius: 2px;
+  background: var(--neutral-alpha-medium, rgba(255, 255, 255, 0.15));
+  transition: background-color 0.3s ease;
+}
+
+.progressDotActive {
+  background: var(--neutral-on-background-strong, #ffffff);
+}
+
+// -------- colonne qui défile (droite) --------
+// Structure en grille : .spacers et .contentSticky occupent la même
+// cellule (superposés). Les spacers sont invisibles et servent
+// uniquement à créer la distance de scroll ; le calque sticky affiche
+// le contenu réel, fixe à l'écran, avec un fondu entre sections.
+.scrollColumn {
+  flex: 6;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.spacers {
+  grid-column: 1;
+  grid-row: 1;
+
+  @media (max-width: 768px) {
+    display: contents; // sur mobile, les spacers deviennent les vraies sections
+  }
+}
+
+.spacerSection {
+  min-height: 90vh;
+
+  @media (max-width: 768px) {
+    min-height: auto;
+  }
+}
+
+.contentSticky {
+  grid-column: 1;
+  grid-row: 1;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  pointer-events: none; // seul le calque actif redevient cliquable
+
+  @media (max-width: 768px) {
+    position: static;
+    height: auto;
+    display: contents;
+  }
+}
+
+.contentLayer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 0;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    position: static;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--neutral-alpha-weak, rgba(255, 255, 255, 0.08));
+  }
+}
+
+.contentLayerActive {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mobileTitle {
+  display: none;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--neutral-on-background-weak, #a0a0a0);
+  max-width: 100%;
+  margin: 0;
+}
+
+// -------- grille d'icônes --------
+.iconsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  width: 100%;
+  gap: 1rem;
+}
+
+.iconLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.iconCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.25rem 0.75rem;
+  border: 1px solid var(--neutral-alpha-weak, rgba(255, 255, 255, 0.08));
+  background: var(--neutral-alpha-weak, rgba(255, 255, 255, 0.03));
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+
+  .iconLink:hover & {
+    transform: translateY(-3px);
+    background: var(--neutral-alpha-medium, rgba(255, 255, 255, 0.07));
+    border-color: var(--neutral-alpha-medium, rgba(255, 255, 255, 0.18));
+  }
+}
+
+.iconSvg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.iconLabel {
+  font-size: 0.75rem;
+  text-align: center;
+  color: var(--neutral-on-background-weak, #a0a0a0);
+}

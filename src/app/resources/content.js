@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Web Developer",
+  role: "Ingénieur — Data Science, Cloud Computing & Intelligence Artificielle",
   avatar: "/images/photo_d'identité_square.png",
   location: "Africa/Casablanca",
   languages: ["English", "French", "Arabic"],
@@ -81,8 +81,8 @@ const about_sec = {
   title: "Who am I?",
   description: (
     <>
-      I'm Oussama, a web developer and Data Science & Cloud Computing engineer student based in
-      Oujda. I have a passion for creating elegant web solutions that simplify complex challenges.
+      I'm Oussama, a Data Science & Cloud Computing engineer student based in Oujda. I have a
+      passion for creating elegant web solutions that simplify complex challenges.
     </>
   ),
   cta: "About me",
@@ -310,6 +310,11 @@ const about = {
 const blog = {
   label: "Blog",
   title: "Sharing and writing about my pure experiences",
+  displayTitle: (
+    <>
+      Sharing and writing <br /> about my pure experiences
+    </>
+  ),
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route

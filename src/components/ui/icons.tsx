@@ -1,5 +1,7 @@
+import * as React from "react";
+
 type IconProps = React.HTMLAttributes<SVGElement>;
-type IconComponent = (props: IconProps) => JSX.Element;
+type IconComponent = (props: IconProps) => React.JSX.Element;
 
 type IconItem = {
   component: IconComponent;
@@ -9,6 +11,7 @@ type IconItem = {
 export const Icons = {
   web: {
     name: "Dev web",
+    image: "/clients/lemog.svg",
     icons: {
       react: {
         href: "https://react.dev/",
@@ -584,9 +587,11 @@ export const Icons = {
         ),
       },
     },
+    image: "/clients/lemog.svg",
   },
   db: {
     name: "Databases",
+    image: "/clients/lemog.svg",
     icons: {
       mysql: {
         href: "https://www.mysql.com/",
@@ -648,6 +653,7 @@ export const Icons = {
   },
   git: {
     name: "Git control",
+    image: "/clients/lemog.svg",
     icons: {
       gitHub: {
         href: "https://github.com/",
@@ -664,6 +670,7 @@ export const Icons = {
   },
   ai: {
     name: "Ai Dev",
+    image: "/clients/lemog.svg",
     icons: {
       openrouter: {
         href: "https://openrouter.ai/",
@@ -772,6 +779,7 @@ export const Icons = {
   },
   pkgcntrl: {
     name: "Package Control",
+    image: "/clients/lemog.svg",
     icons: {
       npm: {
         href: "",

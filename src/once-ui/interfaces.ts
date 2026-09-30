@@ -12,7 +12,7 @@ import {
   TextType,
   TextVariant,
   TextWeight,
-  ShadowCard
+  ShadowCard,
 } from "./types";
 
 export interface GridProps extends HTMLAttributes<HTMLDivElement> {
@@ -100,6 +100,7 @@ export interface StyleProps extends HTMLAttributes<HTMLDivElement> {
   textSize?: TextSize;
   textType?: TextType;
   textWeight?: TextWeight;
+  textColor?: `${ColorScheme}`;
   background?:
     | `${ColorScheme}-${ColorWeight}`
     | `${ColorScheme}-alpha-${ColorWeight}`

@@ -3,12 +3,13 @@
 import React, { ElementType, ComponentPropsWithoutRef } from "react";
 import classNames from "classnames";
 
-import { TextProps, CommonProps, SpacingProps } from "../interfaces";
+import { TextProps, CommonProps, SpacingProps, StyleProps } from "../interfaces";
 import { ColorScheme, ColorWeight, TextVariant, SpacingToken } from "../types";
 
 type HeadingProps<T extends ElementType> = TextProps<T> &
   CommonProps &
   SpacingProps &
+  StyleProps &
   ComponentPropsWithoutRef<T>;
 
 const Heading = <T extends ElementType = "h1">({
@@ -19,6 +20,7 @@ const Heading = <T extends ElementType = "h1">({
   onBackground,
   onSolid,
   align,
+  textColor,
   wrap = "balance",
   padding,
   paddingLeft,
@@ -47,7 +49,7 @@ const Heading = <T extends ElementType = "h1">({
 
   if (onBackground && onSolid) {
     console.warn(
-      "You cannot use both 'onBackground' and 'onSolid' props simultaneously. Only one will be applied.",
+      "You cannot use both 'onBackground' and 'onSolid' props simultaneously. Only one will be applied."
     );
   }
 
@@ -91,7 +93,7 @@ const Heading = <T extends ElementType = "h1">({
     generateClassName("mt", marginTop),
     generateClassName("mb", marginBottom),
     generateClassName("mx", marginX),
-    generateClassName("my", marginY),
+    generateClassName("my", marginY)
   );
 
   return (

@@ -1,4 +1,5 @@
 import { Icons } from "@/components/ui/icons";
+import styles from "./home/TechStack.module.scss";
 
 function StackGrid() {
   return (
@@ -9,7 +10,7 @@ function StackGrid() {
           <section key={catKey}>
             <h3 className="mb-4 text-lg font-semibold">{category.name}</h3>
 
-            <div className="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
               {Object.entries(category.icons).map(([name, item]) => {
                 const Icon = item.component;
 
@@ -19,11 +20,15 @@ function StackGrid() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col items-center gap-2 rounded-lg border p-6 transition 
-                    hover:shadow-lg hover:border-blue-500 bg-white duration-300 ease-in-out "
+                    className={`${styles.socialLink} group relative flex flex-col items-start 
+                    w-full h-full border transition-all duration-300 gap-1 p-6
+                    border-[var(--neutral-alpha-weak)] `}
+                    style={{ borderRadius: "0px", boxShadow: "none", textDecoration: "none" }}
                   >
-                    <Icon className="h-8 w-8 text-gray-800 group-hover:text-blue-600" />
-                    <span className="text-xs text-gray-600 no-underline">{name}</span>
+                    <Icon className="h-12 w-12 text-[var(--neutral-on-background-strong)] group-hover:text-blue-700 transition-colors transition-all duration-300" />
+                    <span className="text-ll font-semibold text-left leading-tight group-hover:text-black transition-colors text-[var(--neutral-on-background-medium)]">
+                      {name}
+                    </span>
                   </a>
                 );
               })}

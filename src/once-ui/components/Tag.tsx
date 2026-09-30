@@ -27,7 +27,7 @@ const Tag = forwardRef<HTMLDivElement, TagProps>(
       children,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const paddingSize = size === "s" ? "2" : "4";
 
@@ -52,7 +52,7 @@ const Tag = forwardRef<HTMLDivElement, TagProps>(
         {suffixIcon && <Icon name={suffixIcon} size="xs" />}
       </Flex>
     );
-  },
+  }
 );
 
 Tag.displayName = "Tag";

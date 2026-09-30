@@ -3,6 +3,7 @@ import { Column } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 import { baseURL } from "@/app/resources";
 import { person, work } from "@/app/resources/content";
+import { ProjectsArchive } from "@/components/work/ProjectsArchive";
 
 export async function generateMetadata() {
   const title = work.title;
@@ -37,7 +38,7 @@ export default function Work() {
   let allProjects = getPosts(["src", "app", "work", "projects"]);
 
   return (
-    <Column maxWidth="m">
+    <Column maxWidth="xl">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -63,7 +64,7 @@ export default function Work() {
           }),
         }}
       />
-      <Projects />
+      <ProjectsArchive />
     </Column>
   );
 }

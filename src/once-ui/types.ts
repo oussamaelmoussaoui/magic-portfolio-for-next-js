@@ -22,7 +22,8 @@ export type TShirtSizes = "xs" | "s" | "m" | "l" | "xl";
 
 export type ResponsiveSpacingToken = TShirtSizes;
 
-export type ShadowCard = "box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)";
+export type ShadowCard =
+  "box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)";
 
 export type ShadowSize = TShirtSizes | ShadowCard;
 
@@ -35,7 +36,8 @@ export type ColorScheme =
   | "info"
   | "danger"
   | "warning"
-  | "success";
+  | "success"
+  | "white";
 
 export type ColorCategory = "on-solid" | "on-background";
 

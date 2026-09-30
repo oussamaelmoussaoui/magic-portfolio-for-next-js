@@ -178,6 +178,7 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(
         ref={backgroundRef}
         fill
         position={position}
+        pointerEvents="none"
         className={classNames(mask && styles.mask, className)}
         top="0"
         left="0"

@@ -10,7 +10,30 @@ interface PostProps {
 }
 
 export default function Post({ post, thumbnail }: PostProps) {
-  const tags = post.metadata.tag.split(",").map((tag: string) => tag.trim());
+  const tags = post.metadata.tag
+    ? post.metadata.tag.split(",").map((tag: string) => tag.trim())
+    : [];
+
+  const category = post.metadata.category || "Articles";
+
+  // Palette harmonieuse pour chaque catégorie
+  const getCategoryVariant = (cat: string) => {
+    switch (cat.toLowerCase()) {
+      case "expérience":
+      case "experience":
+        return "accent";
+      case "news":
+        return "accent";
+      case "tools":
+        return "info";
+      case "cheatsheets":
+        return "warning";
+      case "articles":
+        return "warning";
+      default:
+        return "neutral";
+    }
+  };
 
   return (
     <SmartLink
@@ -24,10 +47,13 @@ export default function Post({ post, thumbnail }: PostProps) {
         position="relative"
         direction="column"
         fillWidth
-        paddingY="12"
-        paddingX="16"
-        gap="32"
-        className="[box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] rounded-2xl bg-white"
+        gap="16"
+        background="surface"
+        className="transition-all duration-300 hover:border-[var(--brand-alpha-medium)]"
+        style={{
+          borderRadius: "0px",
+          boxShadow: "none",
+        }}
       >
         {post.metadata.image && thumbnail && (
           <SmartImage
@@ -37,28 +63,40 @@ export default function Post({ post, thumbnail }: PostProps) {
             sizes="640px"
             border="neutral-alpha-weak"
             cursor="interactive"
-            radius="s"
             src={post.metadata.image}
             alt={"Thumbnail of " + post.metadata.title}
-            aspectRatio="4 / 3"
+            aspectRatio="16 / 9"
           />
         )}
 
-        <Column position="relative" fillWidth gap="8" vertical="start" className="">
-          <Heading as="h2" variant="heading-strong-l" wrap="balance" align="start">
+        <Column position="relative" fillWidth gap="8" vertical="start">
+          {/* Badge de catégorie et Date */}
+          <Flex fillWidth horizontal="space-between" vertical="center" gap="8">
+            <Tag label={category} size="m" variant={getCategoryVariant(category) as any} />
+            <Text variant="body-default-xs" onBackground="neutral-weak">
+              {post.metadata.publishedAt && formatDate(post.metadata.publishedAt, false)}
+            </Text>
+          </Flex>
+
+          <Heading
+            as="h3"
+            variant="heading-strong-m"
+            wrap="balance"
+            align="start"
+            className="font-semibold"
+          >
             {post.metadata.title}
           </Heading>
 
-          <Text variant="body-strong-s" onBackground="neutral-weak" align="start">
-            {post.metadata.publishedAt && formatDate(post.metadata.publishedAt, false)}
-          </Text>
-
-          {tags.length > 0 && (
-            <Flex gap="8">
-              {tags.map((tag: string, index: number) =>
-                index < 3 ? <Tag key={index} label={tag} variant="success" /> : null
-              )}
-            </Flex>
+          {post.metadata.summary && (
+            <Text
+              variant="body-default-s"
+              onBackground="neutral-weak"
+              align="start"
+              className="line-clamp-2"
+            >
+              {post.metadata.summary}
+            </Text>
           )}
         </Column>
       </Flex>
