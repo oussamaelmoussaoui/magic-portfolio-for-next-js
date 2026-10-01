@@ -9,6 +9,8 @@ import { formatDate } from "@/app/utils/formatDate";
 import ScrollToHash from "@/components/ScrollToHash";
 
 export const revalidate = 3600;
+// Autorise les slugs non générés au build (ex : nouveaux articles Notion publiés après le déploiement)
+export const dynamicParams = true;
 
 interface BlogParams {
   params: Promise<{ slug: string }>;
@@ -32,10 +34,16 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 
 export async function generateMetadata({ params }: BlogParams) {
   const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
   const posts = await getAllBlogPosts();
-  const post = posts.find((post) => post.slug === slug);
+  const post = posts.find(
+    (p) =>
+      p.slug === decodedSlug ||
+      p.slug === slug ||
+      p.slug.toLowerCase() === decodedSlug.toLowerCase()
+  );
 
-  if (!post) return;
+  if (!post) return {};
 
   const { title, publishedAt: publishedTime, summary: description, image } = post.metadata;
   const ogImage = image ?? `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -62,8 +70,14 @@ export async function generateMetadata({ params }: BlogParams) {
 
 export default async function Blog({ params }: BlogParams) {
   const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
   const posts = await getAllBlogPosts();
-  const post = posts.find((post) => post.slug === slug);
+
+  // Recherche avec fallback : slug exact → slug décodé → insensible à la casse
+  const post =
+    posts.find((p) => p.slug === decodedSlug) ??
+    posts.find((p) => p.slug === slug) ??
+    posts.find((p) => p.slug.toLowerCase() === decodedSlug.toLowerCase());
 
   if (!post) {
     notFound();
